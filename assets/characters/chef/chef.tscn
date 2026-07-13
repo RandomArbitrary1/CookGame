@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://qvo4jksb0bkj"]
 
+[ext_resource type="Script" uid="uid://cdqpcevtq8jts" path="res://scripts/chef/chef.gd" id="1_035l4"]
 [ext_resource type="Texture2D" uid="uid://ee448mfjxkq7" path="res://assets/characters/chef/img/prototype1.png" id="1_jgk6q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_035l4"]
@@ -17,6 +18,7 @@ animations = [{
 }]
 
 [node name="Chef" type="CharacterBody2D" unique_id=396987354]
+script = ExtResource("1_035l4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=415656860]
 shape = SubResource("CircleShape2D_035l4")
