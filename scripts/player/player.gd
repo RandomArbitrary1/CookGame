@@ -24,6 +24,6 @@ func click():
 	selected_object = null
 	var collisions = hitbox.get_overlapping_bodies()
 	for obj in collisions:
-		if obj.name == "Chef":
+		if obj.is_in_group("chef"):
 			selected_object = obj
 			break
