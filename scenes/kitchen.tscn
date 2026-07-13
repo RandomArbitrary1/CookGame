@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://c0qjdr4ibm8vi" path="res://assets/environment/Kitchen.tres" id="1_7ilqw"]
 [ext_resource type="PackedScene" uid="uid://qvo4jksb0bkj" path="res://assets/characters/chef/chef.tscn" id="2_mrp8g"]
+[ext_resource type="PackedScene" uid="uid://by6c74ta1wq3l" path="res://assets/characters/player/player.tscn" id="3_2b6py"]
 
 [node name="Node2D" type="Node2D" unique_id=1893824779]
 
@@ -11,4 +12,6 @@ tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAE
 tile_set = ExtResource("1_7ilqw")
 
 [node name="Chef" parent="." unique_id=396987354 instance=ExtResource("2_mrp8g")]
-position = Vector2(137, 79)
+position = Vector2(67, 47)
+
+[node name="Player" parent="." unique_id=366630141 instance=ExtResource("3_2b6py")]

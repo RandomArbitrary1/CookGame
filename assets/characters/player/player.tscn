@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://by6c74ta1wq3l"]
+
+[ext_resource type="Texture2D" uid="uid://djvm7n6aqb72x" path="res://assets/characters/player/img/mouse1.png" id="1_c3abi"]
+[ext_resource type="Script" uid="uid://tfg60vpsima1" path="res://scripts/player/player.gd" id="1_prble"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_prble"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c3abi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prble"]
+radius = 8.0
+
+[node name="Player" type="Node2D" unique_id=366630141]
+script = ExtResource("1_prble")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2120559105]
+sprite_frames = SubResource("SpriteFrames_prble")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1476960874]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=690608359]
+shape = SubResource("CircleShape2D_prble")
