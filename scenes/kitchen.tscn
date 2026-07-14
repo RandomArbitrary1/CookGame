@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://by6c74ta1wq3l" path="res://assets/characters/player/player.tscn" id="3_2b6py"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2b6py"]
-vertices = PackedVector2Array(186, 106, 230, 118, 86, 118, 70, 106, 230, 26, 186, 54, 202, 42, 86, 134, 10, 134, 26, 122, 10, 122, 26, 42, 70, 54, 202, 26)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5, 6), PackedInt32Array(3, 2, 7, 8, 9), PackedInt32Array(8, 10, 9), PackedInt32Array(3, 9, 11, 12), PackedInt32Array(12, 11, 6, 5), PackedInt32Array(4, 6, 13)])
+vertices = PackedVector2Array(186, 90, 186, 54, 233.21094, 86, 233.57031, 118, 218, 26, 233.25, 26, 233.39063, 38, 233.21094, 38, 218, 36.65625, 233.39063, 54, 233.21094, 54, 233.39063, 70, 233.21094, 70, 233.39063, 86, 73.21094, 54, 73.390625, 70, 73.21094, 70, 26, 42, 89.21094, 118, 89.390625, 134, 10, 134, 22.570313, 122, 198.57031, 42, 10, 122, 22.75, 106, 26, 106, 182.57031, 106, 182.75, 90, 73.609375, 106, 198.61719, 37.078125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(7, 9, 10), PackedInt32Array(10, 11, 12, 1), PackedInt32Array(12, 13, 2, 1), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(8, 7, 10, 1, 22), PackedInt32Array(20, 23, 21), PackedInt32Array(18, 21, 24, 25), PackedInt32Array(26, 27, 0, 3), PackedInt32Array(26, 3, 18, 28), PackedInt32Array(28, 18, 25), PackedInt32Array(16, 28, 25, 17), PackedInt32Array(14, 17, 22, 1), PackedInt32Array(8, 22, 29)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 256, 0, 256, 144, 0, 144)])
 
 [node name="Node2D" type="Node2D" unique_id=1893824779]

@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bbndw3pjrg375" path="res://scripts/chef/animation.gd" id="5_jskf3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_035l4"]
-radius = 6.0
+radius = 1.4142135
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vjmbp"]
 animations = [{
