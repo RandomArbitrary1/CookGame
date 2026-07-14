@@ -1,20 +1,37 @@
 [gd_scene format=3 uid="uid://qvo4jksb0bkj"]
 
 [ext_resource type="Script" uid="uid://cdqpcevtq8jts" path="res://scripts/chef/chef.gd" id="1_035l4"]
-[ext_resource type="Texture2D" uid="uid://ee448mfjxkq7" path="res://assets/characters/chef/img/prototype1.png" id="1_jgk6q"]
+[ext_resource type="Texture2D" uid="uid://d2f2ullyno0eq" path="res://assets/characters/chef/img/body1.png" id="2_vjmbp"]
+[ext_resource type="Texture2D" uid="uid://5rhgibit65jq" path="res://assets/characters/chef/img/outfit1.png" id="3_4e7ff"]
+[ext_resource type="Texture2D" uid="uid://dofkevv20kig" path="res://assets/characters/chef/img/outfit1_mirrored.png" id="4_4e7ff"]
+[ext_resource type="Script" uid="uid://bbndw3pjrg375" path="res://scripts/chef/animation.gd" id="5_jskf3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_035l4"]
-radius = 8.0
+radius = 6.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vjmbp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_jgk6q")
+"texture": ExtResource("2_vjmbp")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jskf3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4e7ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4e7ff")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.9
 }]
 
 [node name="Chef" type="CharacterBody2D" unique_id=396987354 groups=["chef"]]
@@ -23,5 +40,18 @@ script = ExtResource("1_035l4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=415656860]
 shape = SubResource("CircleShape2D_035l4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1202056052]
+[node name="AnimBody" type="AnimatedSprite2D" parent="." unique_id=806678805]
 sprite_frames = SubResource("SpriteFrames_vjmbp")
+
+[node name="AnimOutfit" type="AnimatedSprite2D" parent="." unique_id=1202056052]
+sprite_frames = SubResource("SpriteFrames_jskf3")
+autoplay = "default"
+frame = 1
+frame_progress = 0.32967696
+
+[node name="Animation" type="Node2D" parent="." unique_id=738807211]
+script = ExtResource("5_jskf3")
+
+[node name="NavAgent2d" type="NavigationAgent2D" parent="." unique_id=466977877]
+avoidance_enabled = true
+radius = 16.0

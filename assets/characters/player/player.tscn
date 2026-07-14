@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://djvm7n6aqb72x" path="res://assets/characters/player/img/mouse1.png" id="1_c3abi"]
 [ext_resource type="Script" uid="uid://tfg60vpsima1" path="res://scripts/player/player.gd" id="1_prble"]
-[ext_resource type="Texture2D" uid="uid://cdk2idr21tmkt" path="res://assets/characters/player/img/target.png" id="3_c1sar"]
+[ext_resource type="Texture2D" uid="uid://pflniibnc568" path="res://assets/characters/player/img/target_anim.png" id="3_c1sar"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prble"]
-radius = 8.0
+radius = 6.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_prble"]
 animations = [{
@@ -18,15 +18,40 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju3fu"]
+atlas = ExtResource("3_c1sar")
+region = Rect2(0, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1agn"]
+atlas = ExtResource("3_c1sar")
+region = Rect2(9, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiske"]
+atlas = ExtResource("3_c1sar")
+region = Rect2(18, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ppuv"]
+atlas = ExtResource("3_c1sar")
+region = Rect2(27, 0, 9, 9)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ju3fu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_c1sar")
+"texture": SubResource("AtlasTexture_ju3fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1agn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiske")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ppuv")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"new_animation",
+"speed": 7.0
 }]
 
 [node name="Player" type="Node2D" unique_id=366630141]
@@ -42,3 +67,7 @@ sprite_frames = SubResource("SpriteFrames_prble")
 
 [node name="TargetSprite" type="AnimatedSprite2D" parent="." unique_id=861082768]
 sprite_frames = SubResource("SpriteFrames_ju3fu")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 1
+frame_progress = 0.47355595

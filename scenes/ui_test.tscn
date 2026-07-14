@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bjqwrcajyolnv"]
+[gd_scene format=3 uid="uid://baogsaum0fp6l"]
 
 [ext_resource type="PackedScene" uid="uid://o85r0jk3it4k" path="res://assets/ui/button.tscn" id="1_yyqtq"]
 [ext_resource type="Texture2D" uid="uid://ban4a6xp3vbkd" path="res://assets/ui/Navigation.png" id="2_i6be1"]
