@@ -1,0 +1,532 @@
+[gd_scene format=3 uid="uid://c7wu328hopdft"]
+
+[ext_resource type="Texture2D" uid="uid://bqllp2f34jpkv" path="res://assets/ui/Navigation_plue.png" id="1_yk4sq"]
+[ext_resource type="PackedScene" uid="uid://clffama5irg3j" path="res://assets/ui/close.tscn" id="2_66mx0"]
+[ext_resource type="Texture2D" uid="uid://b1ermlat3iaen" path="res://assets/ui/Navigation_pink.png" id="3_fs62j"]
+[ext_resource type="Theme" uid="uid://mjl7udec3xc0" path="res://assets/ui/UI.tres" id="3_p3505"]
+[ext_resource type="Texture2D" uid="uid://c2vxcfb6fcmui" path="res://assets/ui/Navigation_grid.png" id="4_fs62j"]
+[ext_resource type="Texture2D" uid="uid://bn3yaxwxs8jb2" path="res://assets/ui/Button_back.png" id="5_23ovu"]
+[ext_resource type="PackedScene" uid="uid://o85r0jk3it4k" path="res://assets/ui/button.tscn" id="6_mlk18"]
+[ext_resource type="Texture2D" uid="uid://bil2pv2ar0jif" path="res://assets/ui/Navigation_purple.png" id="8_23ovu"]
+
+[sub_resource type="Animation" id="Animation_sj6lk"]
+resource_name = "Close"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 144.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vnxhw"]
+resource_name = "Open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [144.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ki45x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wa5vk"]
+_data = {
+&"Close": SubResource("Animation_sj6lk"),
+&"Open": SubResource("Animation_vnxhw"),
+&"RESET": SubResource("Animation_ki45x")
+}
+
+[node name="Home" type="Control" unique_id=1979595064]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Nav" type="ColorRect" parent="." unique_id=1603296852]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 256.0
+offset_bottom = 144.0
+color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+
+[node name="Outline" type="NinePatchRect" parent="Nav" unique_id=1884235685]
+layout_mode = 1
+offset_left = 14.0
+offset_top = -10.0
+offset_right = 71.0
+offset_bottom = 10.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Outline2" type="NinePatchRect" parent="Nav" unique_id=567315501]
+layout_mode = 1
+offset_left = 70.0
+offset_top = -10.0
+offset_right = 128.0
+offset_bottom = 10.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Outline3" type="NinePatchRect" parent="Nav" unique_id=332416448]
+layout_mode = 1
+offset_left = 127.0
+offset_top = -10.0
+offset_right = 184.0
+offset_bottom = 10.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Outline4" type="NinePatchRect" parent="Nav" unique_id=655699311]
+layout_mode = 1
+offset_left = 183.0
+offset_top = -10.0
+offset_right = 241.0
+offset_bottom = 10.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="NavItems" type="HBoxContainer" parent="." unique_id=1450392692]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 112.0
+offset_right = 239.0
+offset_bottom = 128.0
+theme_override_constants/separation = 3
+
+[node name="Chefs" parent="NavItems" unique_id=830832516 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Button_blue"
+
+[node name="Menu" parent="NavItems" unique_id=913243566 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Button_pink"
+
+[node name="Stats" parent="NavItems" unique_id=230183094 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Button_purple"
+
+[node name="Play" parent="NavItems" unique_id=1468978236 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Button_green"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1949734018]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 43.0
+theme_override_constants/separation = 2
+
+[node name="Settings" parent="VBoxContainer" unique_id=327861426 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Menu" parent="VBoxContainer" unique_id=566684823 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Menu" type="ColorRect" parent="." unique_id=828887166]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.74509805)
+
+[node name="Nav" type="TextureRect" parent="Menu" unique_id=1578017584]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 16.0
+texture = ExtResource("3_fs62j")
+
+[node name="Close" parent="Menu/Nav" unique_id=963356406 instance=ExtResource("2_66mx0")]
+layout_mode = 0
+offset_left = 240.0
+offset_right = 256.0
+
+[node name="Title" type="Label" parent="Menu/Nav" unique_id=1560567194]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 191.0
+offset_bottom = 16.0
+theme = ExtResource("3_p3505")
+text = "Menu"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Nav" unique_id=125910816]
+modulate = Color(1, 1, 1, 0.15686275)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 16.0
+texture = ExtResource("4_fs62j")
+
+[node name="ColorRect" type="ColorRect" parent="Menu" unique_id=164424198]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 144.0
+color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+
+[node name="Outline" type="NinePatchRect" parent="Menu/ColorRect" unique_id=946972160]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 6.0
+offset_right = 42.0
+offset_bottom = 26.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Outline2" type="NinePatchRect" parent="Menu/ColorRect" unique_id=1976900618]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 25.0
+offset_right = 42.0
+offset_bottom = 45.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Outline3" type="NinePatchRect" parent="Menu/ColorRect" unique_id=1616301622]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 44.0
+offset_right = 42.0
+offset_bottom = 64.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=1145291459]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 80.0
+theme_override_constants/separation = 3
+
+[node name="Button" parent="Menu/VBoxContainer" unique_id=755637883 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+theme_type_variation = &"Button_blue"
+
+[node name="Button2" parent="Menu/VBoxContainer" unique_id=793847348 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+theme_type_variation = &"Button_yellow"
+
+[node name="Button3" parent="Menu/VBoxContainer" unique_id=1687453199 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+theme_type_variation = &"Button_purple"
+
+[node name="Anims" type="AnimationPlayer" parent="Menu" unique_id=2037592935]
+libraries/ = SubResource("AnimationLibrary_wa5vk")
+
+[node name="Chefs" type="ColorRect" parent="." unique_id=1830160328]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.74509805)
+
+[node name="Nav" type="TextureRect" parent="Chefs" unique_id=504004164]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 16.0
+texture = ExtResource("1_yk4sq")
+
+[node name="Close" parent="Chefs/Nav" unique_id=1930127683 instance=ExtResource("2_66mx0")]
+layout_mode = 0
+offset_left = 240.0
+offset_right = 256.0
+
+[node name="Title" type="Label" parent="Chefs/Nav" unique_id=1594613523]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 191.0
+offset_bottom = 16.0
+theme = ExtResource("3_p3505")
+text = "Chefs"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Chefs/Nav" unique_id=1429546652]
+modulate = Color(1, 1, 1, 0.15686275)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 16.0
+texture = ExtResource("4_fs62j")
+
+[node name="ColorRect" type="ColorRect" parent="Chefs" unique_id=1532082333]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 144.0
+color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+
+[node name="Outline" type="NinePatchRect" parent="Chefs/ColorRect" unique_id=1992373301]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 6.0
+offset_right = 42.0
+offset_bottom = 26.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Outline2" type="NinePatchRect" parent="Chefs/ColorRect" unique_id=1161205522]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 25.0
+offset_right = 42.0
+offset_bottom = 45.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Outline3" type="NinePatchRect" parent="Chefs/ColorRect" unique_id=1817977229]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 44.0
+offset_right = 42.0
+offset_bottom = 64.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Chefs" unique_id=2117476630]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 80.0
+theme_override_constants/separation = 3
+
+[node name="Button" parent="Chefs/VBoxContainer" unique_id=1689092950 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+theme_type_variation = &"Button_blue"
+
+[node name="Button2" parent="Chefs/VBoxContainer" unique_id=99648117 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+theme_type_variation = &"Button_yellow"
+
+[node name="Button3" parent="Chefs/VBoxContainer" unique_id=1181146366 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+theme_type_variation = &"Button_purple"
+
+[node name="Anims" type="AnimationPlayer" parent="Chefs" unique_id=2058757555]
+libraries/ = SubResource("AnimationLibrary_wa5vk")
+
+[node name="Rating" type="ColorRect" parent="." unique_id=137214127]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.74509805)
+
+[node name="Nav" type="TextureRect" parent="Rating" unique_id=1387458990]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 16.0
+texture = ExtResource("8_23ovu")
+
+[node name="Close" parent="Rating/Nav" unique_id=808543018 instance=ExtResource("2_66mx0")]
+layout_mode = 0
+offset_left = 240.0
+offset_right = 256.0
+
+[node name="Title" type="Label" parent="Rating/Nav" unique_id=122143939]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 191.0
+offset_bottom = 16.0
+theme = ExtResource("3_p3505")
+text = "Rating"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Rating/Nav" unique_id=763335956]
+modulate = Color(1, 1, 1, 0.15686275)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 16.0
+texture = ExtResource("4_fs62j")
+
+[node name="ColorRect" type="ColorRect" parent="Rating" unique_id=377692237]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 144.0
+color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+
+[node name="Outline" type="NinePatchRect" parent="Rating/ColorRect" unique_id=32503712]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 6.0
+offset_right = 42.0
+offset_bottom = 26.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Outline2" type="NinePatchRect" parent="Rating/ColorRect" unique_id=1660500145]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 25.0
+offset_right = 42.0
+offset_bottom = 45.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Outline3" type="NinePatchRect" parent="Rating/ColorRect" unique_id=1388731034]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 44.0
+offset_right = 42.0
+offset_bottom = 64.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Rating" unique_id=1492538744]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 80.0
+theme_override_constants/separation = 3
+
+[node name="Button" parent="Rating/VBoxContainer" unique_id=1336333087 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+theme_type_variation = &"Button_blue"
+
+[node name="Button2" parent="Rating/VBoxContainer" unique_id=442696932 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+theme_type_variation = &"Button_yellow"
+
+[node name="Button3" parent="Rating/VBoxContainer" unique_id=1999492530 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+theme_type_variation = &"Button_purple"
+
+[node name="Anims" type="AnimationPlayer" parent="Rating" unique_id=1386293160]
+libraries/ = SubResource("AnimationLibrary_wa5vk")
