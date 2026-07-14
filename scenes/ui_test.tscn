@@ -1,11 +1,119 @@
 [gd_scene format=3 uid="uid://baogsaum0fp6l"]
 
 [ext_resource type="PackedScene" uid="uid://o85r0jk3it4k" path="res://assets/ui/button.tscn" id="1_yyqtq"]
-[ext_resource type="Texture2D" uid="uid://ban4a6xp3vbkd" path="res://assets/ui/Navigation.png" id="2_i6be1"]
-[ext_resource type="Texture2D" uid="uid://b1utpnf407vtd" path="res://assets/ui/close.png" id="3_yyqtq"]
-[ext_resource type="Texture2D" uid="uid://be7kbxorakktl" path="res://assets/ui/close_pressed.png" id="4_vnxhw"]
-[ext_resource type="Texture2D" uid="uid://b4dlg56kr3qnh" path="res://assets/ui/close_hover.png" id="5_ki45x"]
+[ext_resource type="Texture2D" uid="uid://bqllp2f34jpkv" path="res://assets/ui/Navigation_plue.png" id="3_vnxhw"]
+[ext_resource type="PackedScene" uid="uid://clffama5irg3j" path="res://assets/ui/close.tscn" id="4_xsen0"]
+[ext_resource type="Theme" uid="uid://mjl7udec3xc0" path="res://assets/ui/UI.tres" id="5_yyqtq"]
+[ext_resource type="Texture2D" uid="uid://c2vxcfb6fcmui" path="res://assets/ui/Navigation_grid.png" id="6_ki45x"]
 [ext_resource type="Texture2D" uid="uid://bn3yaxwxs8jb2" path="res://assets/ui/Button_back.png" id="6_vnxhw"]
+
+[sub_resource type="GDScript" id="GDScript_vnxhw"]
+resource_name = "Temporary_test"
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	self.get_node(\"Start/Quit\").pressed.connect(func():
+		get_tree().quit()
+	)
+	self.get_node(\"Start/Settings\").pressed.connect(func():
+		self.get_node(\"Settings/Anims\").play(\"Open\")
+	)
+	self.get_node(\"Settings/Nav/Close\").pressed.connect(func():
+		self.get_node(\"Settings/Anims\").play(\"Close\")
+	)
+"
+
+[sub_resource type="Animation" id="Animation_sj6lk"]
+resource_name = "Close"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 144.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vnxhw"]
+resource_name = "Open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [144.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ki45x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sj6lk"]
+_data = {
+&"Close": SubResource("Animation_sj6lk"),
+&"Open": SubResource("Animation_vnxhw"),
+&"RESET": SubResource("Animation_ki45x")
+}
 
 [node name="UiTest" type="Control" unique_id=826223502]
 layout_mode = 3
@@ -14,6 +122,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_vnxhw")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1807136724]
 layout_mode = 0
@@ -26,7 +135,7 @@ color = Color(0.056291588, 0.056291603, 0.056291595, 1)
 layout_mode = 1
 offset_left = 14.0
 offset_top = -10.0
-offset_right = 89.0
+offset_right = 90.0
 offset_bottom = 10.0
 texture = ExtResource("6_vnxhw")
 region_rect = Rect2(0, 0, 20, 20)
@@ -37,7 +146,7 @@ patch_margin_bottom = 10
 
 [node name="Outline2" type="NinePatchRect" parent="ColorRect2" unique_id=67210353]
 layout_mode = 1
-offset_left = 90.0
+offset_left = 89.0
 offset_top = -10.0
 offset_right = 165.0
 offset_bottom = 10.0
@@ -50,7 +159,7 @@ patch_margin_bottom = 10
 
 [node name="Outline3" type="NinePatchRect" parent="ColorRect2" unique_id=725329058]
 layout_mode = 1
-offset_left = 166.0
+offset_left = 164.0
 offset_top = -10.0
 offset_right = 241.0
 offset_bottom = 10.0
@@ -61,65 +170,78 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=662764807]
+[node name="Start" type="HBoxContainer" parent="." unique_id=662764807]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 112.0
 offset_right = 239.0
 offset_bottom = 128.0
-theme_override_constants/separation = 5
+theme_override_constants/separation = 3
 
-[node name="Button" parent="VBoxContainer" unique_id=755637883 instance=ExtResource("1_yyqtq")]
+[node name="Settings" parent="Start" unique_id=755637883 instance=ExtResource("1_yyqtq")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"Button_blue"
 text = "Settings"
 
-[node name="Button2" parent="VBoxContainer" unique_id=1018619168 instance=ExtResource("1_yyqtq")]
+[node name="Play" parent="Start" unique_id=1018619168 instance=ExtResource("1_yyqtq")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"Button_green"
 text = "Play"
 
-[node name="Button3" parent="VBoxContainer" unique_id=1535361779 instance=ExtResource("1_yyqtq")]
+[node name="Quit" parent="Start" unique_id=1535361779 instance=ExtResource("1_yyqtq")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"Button_red"
 text = "Quit"
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1615192494]
+[node name="Settings" type="ColorRect" parent="." unique_id=1615192494]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.74509805)
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=1806882644]
+[node name="Nav" type="TextureRect" parent="Settings" unique_id=1806882644]
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 16.0
-texture = ExtResource("2_i6be1")
+texture = ExtResource("3_vnxhw")
 
-[node name="TextureButton" type="TextureButton" parent="ColorRect" unique_id=1589177787]
+[node name="Close" parent="Settings/Nav" unique_id=963356406 instance=ExtResource("4_xsen0")]
 layout_mode = 0
 offset_left = 240.0
 offset_right = 256.0
-offset_bottom = 16.0
-texture_normal = ExtResource("3_yyqtq")
-texture_pressed = ExtResource("4_vnxhw")
-texture_hover = ExtResource("5_ki45x")
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=1840634621]
+[node name="Title" type="Label" parent="Settings/Nav" unique_id=309926593]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 191.0
+offset_bottom = 16.0
+theme = ExtResource("5_yyqtq")
+text = "Settings"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Settings/Nav" unique_id=71512008]
+modulate = Color(1, 1, 1, 0.15686275)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 16.0
+texture = ExtResource("6_ki45x")
+
+[node name="ColorRect" type="ColorRect" parent="Settings" unique_id=1840634621]
 layout_mode = 0
 offset_top = 16.0
 offset_right = 32.0
 offset_bottom = 144.0
 color = Color(0.056291588, 0.056291603, 0.056291595, 1)
 
-[node name="Outline" type="NinePatchRect" parent="ColorRect/ColorRect" unique_id=1344815467]
+[node name="Outline" type="NinePatchRect" parent="Settings/ColorRect" unique_id=1344815467]
 layout_mode = 1
 offset_left = 22.0
 offset_top = 6.0
@@ -132,12 +254,12 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Outline2" type="NinePatchRect" parent="ColorRect/ColorRect" unique_id=1028863239]
+[node name="Outline2" type="NinePatchRect" parent="Settings/ColorRect" unique_id=1028863239]
 layout_mode = 1
 offset_left = 22.0
-offset_top = 27.0
+offset_top = 25.0
 offset_right = 42.0
-offset_bottom = 47.0
+offset_bottom = 45.0
 texture = ExtResource("6_vnxhw")
 region_rect = Rect2(0, 0, 20, 20)
 patch_margin_left = 10
@@ -145,12 +267,12 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Outline3" type="NinePatchRect" parent="ColorRect/ColorRect" unique_id=1830856330]
+[node name="Outline3" type="NinePatchRect" parent="Settings/ColorRect" unique_id=1830856330]
 layout_mode = 1
 offset_left = 22.0
-offset_top = 48.0
+offset_top = 44.0
 offset_right = 42.0
-offset_bottom = 68.0
+offset_bottom = 64.0
 texture = ExtResource("6_vnxhw")
 region_rect = Rect2(0, 0, 20, 20)
 patch_margin_left = 10
@@ -158,22 +280,25 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1785761273]
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings" unique_id=1785761273]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 24.0
 offset_right = 40.0
 offset_bottom = 80.0
-theme_override_constants/separation = 5
+theme_override_constants/separation = 3
 
-[node name="Button" parent="ColorRect/VBoxContainer" unique_id=901321122 instance=ExtResource("1_yyqtq")]
+[node name="Button" parent="Settings/VBoxContainer" unique_id=901321122 instance=ExtResource("1_yyqtq")]
 layout_mode = 2
 theme_type_variation = &"Button_blue"
 
-[node name="Button2" parent="ColorRect/VBoxContainer" unique_id=426527373 instance=ExtResource("1_yyqtq")]
+[node name="Button2" parent="Settings/VBoxContainer" unique_id=426527373 instance=ExtResource("1_yyqtq")]
 layout_mode = 2
 theme_type_variation = &"Button_yellow"
 
-[node name="Button3" parent="ColorRect/VBoxContainer" unique_id=1257047867 instance=ExtResource("1_yyqtq")]
+[node name="Button3" parent="Settings/VBoxContainer" unique_id=1257047867 instance=ExtResource("1_yyqtq")]
 layout_mode = 2
 theme_type_variation = &"Button_purple"
+
+[node name="Anims" type="AnimationPlayer" parent="Settings" unique_id=388550353]
+libraries/ = SubResource("AnimationLibrary_sj6lk")
