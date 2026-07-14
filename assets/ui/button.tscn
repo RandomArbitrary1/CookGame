@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://o85r0jk3it4k"]
+
+[ext_resource type="Theme" uid="uid://mjl7udec3xc0" path="res://assets/ui/UI.tres" id="1_gvsox"]
+[ext_resource type="Texture2D" uid="uid://dy8uxouvklif6" path="res://assets/ui/button_outline.png" id="2_7i6tk"]
+[ext_resource type="Script" uid="uid://cx0lc1xx4rqkr" path="res://assets/ui/button.gd" id="2_p0iw0"]
+
+[node name="Button" type="Button" unique_id=755637883]
+custom_minimum_size = Vector2(0, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+theme = ExtResource("1_gvsox")
+script = ExtResource("2_p0iw0")
+
+[node name="Outline" type="NinePatchRect" parent="." unique_id=926164069]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7i6tk")
+region_rect = Rect2(0, 0, 18, 18)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
