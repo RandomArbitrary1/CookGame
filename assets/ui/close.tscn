@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://clffama5irg3j"]
+
+[ext_resource type="Texture2D" uid="uid://b1utpnf407vtd" path="res://assets/ui/close.png" id="1_46vfb"]
+[ext_resource type="Script" uid="uid://cx0lc1xx4rqkr" path="res://assets/ui/button.gd" id="2_v50w6"]
+[ext_resource type="Texture2D" uid="uid://v2po4tbg1cq" path="res://assets/ui/close_border.png" id="3_6ljj4"]
+
+[node name="Close" type="TextureButton" unique_id=963356406]
+offset_right = 16.0
+offset_bottom = 16.0
+texture_normal = ExtResource("1_46vfb")
+script = ExtResource("2_v50w6")
+
+[node name="Outline" type="TextureRect" parent="." unique_id=573791775]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_right = 16.0
+offset_bottom = 17.0
+texture = ExtResource("3_6ljj4")

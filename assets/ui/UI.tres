@@ -102,7 +102,7 @@ expand_margin_bottom = 1.0
 
 [resource]
 default_font = ExtResource("8_r06vq")
-default_font_size = 8
+default_font_size = 9
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/styles/focus = SubResource("StyleBoxTexture_uba2d")
 Button/styles/hover = SubResource("StyleBoxTexture_uba2d")
