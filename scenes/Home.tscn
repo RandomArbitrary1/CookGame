@@ -4,10 +4,85 @@
 [ext_resource type="PackedScene" uid="uid://clffama5irg3j" path="res://assets/ui/close.tscn" id="2_66mx0"]
 [ext_resource type="Texture2D" uid="uid://b1ermlat3iaen" path="res://assets/ui/Navigation_pink.png" id="3_fs62j"]
 [ext_resource type="Theme" uid="uid://mjl7udec3xc0" path="res://assets/ui/UI.tres" id="3_p3505"]
+[ext_resource type="PackedScene" uid="uid://c8u56p7wo51gc" path="res://assets/ui/button_white.tscn" id="4_23ovu"]
 [ext_resource type="Texture2D" uid="uid://c2vxcfb6fcmui" path="res://assets/ui/Navigation_grid.png" id="4_fs62j"]
 [ext_resource type="Texture2D" uid="uid://bn3yaxwxs8jb2" path="res://assets/ui/Button_back.png" id="5_23ovu"]
 [ext_resource type="PackedScene" uid="uid://o85r0jk3it4k" path="res://assets/ui/button.tscn" id="6_mlk18"]
 [ext_resource type="Texture2D" uid="uid://bil2pv2ar0jif" path="res://assets/ui/Navigation_purple.png" id="8_23ovu"]
+[ext_resource type="Texture2D" uid="uid://dy8uxouvklif6" path="res://assets/ui/button_outline.png" id="8_mlk18"]
+
+[sub_resource type="GDScript" id="GDScript_23ovu"]
+resource_name = "Home"
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	for i in self.get_node(\"NavItems\").get_children():
+		i.pressed.connect(func():
+			var tab = self.get_node_or_null(i.name + \"/Anims\")
+			if tab:
+				tab.play(\"Open\")
+		)
+	for i in self.get_children():
+		var close = i.get_node_or_null(\"Nav/Close\")
+		if close:
+			close.pressed.connect(func():
+				i.get_node(\"Anims\").play(\"Close\")
+			)
+"
+
+[sub_resource type="GDScript" id="GDScript_fs62j"]
+resource_name = "Menu_script"
+script/source = "extends ColorRect
+
+var selected = null
+var tab = \"Starters\"
+
+var items = [
+	{name=\"Food\",type=\"Starters\",kitchen=\"Country\",price=12,Description=\"About\"},
+	{name=\"Epic dish\",type=\"Mains\",kitchen=\"Epic place\",price=69,Description=\"Epic facts\"},
+	{name=\"Cooked chicken\",type=\"Mains\",kitchen=\"English\",price=69,Description=\"No seasoning, just cooked\"},
+	{name=\"Gamer girl bathwater\",type=\"Drinks\",kitchen=\"English\",price=69,Description=\"Fresh from the tub\"},
+]
+
+@onready var temp = self.get_node(\"Tab/List/Button\").duplicate()
+
+func loadList():
+	for i in self.get_node(\"Tab/List\").get_children():
+		i.queue_free()
+	for i in items:
+		if i.type == tab:
+			var item = temp.duplicate()
+			self.get_node(\"Tab/List\").add_child(item)
+			item.pressed.connect(func():
+				selected = i.name
+				self.get_node(\"Info/Title\").text = i.name
+				self.get_node(\"Info/Kitchen\").text = i.kitchen + \" dish\"
+				self.get_node(\"Info/Price\").text = str(i.price) + \"$\"
+				item.modulate = Color(0.791, 0.949, 0.994, 1.0)
+				selected = item
+				for it in self.get_node(\"Tab/List\").get_children():
+					if it != item:
+						it.modulate = Color(1,1,1)
+			)
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	self.get_node(\"Tab/List/Button\").queue_free()
+	
+	loadList()
+	for i in self.get_node(\"NavItems\").get_children():
+		i.pressed.connect(func():
+			if tab != i.name:
+				tab = i.name
+				loadList()
+				i.get_node(\"Active\").visible = true
+				for it in self.get_node(\"NavItems\").get_children():
+					if it != i:
+						it.get_node(\"Active\").visible = false
+		)
+"
 
 [sub_resource type="Animation" id="Animation_sj6lk"]
 resource_name = "Close"
@@ -106,6 +181,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_23ovu")
 
 [node name="Nav" type="ColorRect" parent="." unique_id=1603296852]
 layout_mode = 0
@@ -118,7 +194,7 @@ color = Color(0.056291588, 0.056291603, 0.056291595, 1)
 layout_mode = 1
 offset_left = 14.0
 offset_top = -10.0
-offset_right = 71.0
+offset_right = 64.0
 offset_bottom = 10.0
 texture = ExtResource("5_23ovu")
 region_rect = Rect2(0, 0, 20, 20)
@@ -129,9 +205,9 @@ patch_margin_bottom = 10
 
 [node name="Outline2" type="NinePatchRect" parent="Nav" unique_id=567315501]
 layout_mode = 1
-offset_left = 70.0
+offset_left = 63.0
 offset_top = -10.0
-offset_right = 128.0
+offset_right = 114.0
 offset_bottom = 10.0
 texture = ExtResource("5_23ovu")
 region_rect = Rect2(0, 0, 20, 20)
@@ -142,9 +218,9 @@ patch_margin_bottom = 10
 
 [node name="Outline3" type="NinePatchRect" parent="Nav" unique_id=332416448]
 layout_mode = 1
-offset_left = 127.0
+offset_left = 113.0
 offset_top = -10.0
-offset_right = 184.0
+offset_right = 163.0
 offset_bottom = 10.0
 texture = ExtResource("5_23ovu")
 region_rect = Rect2(0, 0, 20, 20)
@@ -155,7 +231,7 @@ patch_margin_bottom = 10
 
 [node name="Outline4" type="NinePatchRect" parent="Nav" unique_id=655699311]
 layout_mode = 1
-offset_left = 183.0
+offset_left = 162.0
 offset_top = -10.0
 offset_right = 241.0
 offset_bottom = 10.0
@@ -192,7 +268,9 @@ theme_type_variation = &"Button_purple"
 [node name="Play" parent="NavItems" unique_id=1468978236 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.6
 theme_type_variation = &"Button_green"
+text = "Start shift"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1949734018]
 layout_mode = 0
@@ -212,6 +290,7 @@ size_flags_horizontal = 3
 
 [node name="Menu" type="ColorRect" parent="." unique_id=828887166]
 visible = false
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -220,6 +299,92 @@ offset_bottom = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.74509805)
+script = SubResource("GDScript_fs62j")
+
+[node name="Tab" type="ScrollContainer" parent="Menu" unique_id=149326995]
+clip_contents = false
+layout_mode = 0
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 176.0
+offset_bottom = 136.0
+theme = ExtResource("3_p3505")
+
+[node name="List" type="GridContainer" parent="Menu/Tab" unique_id=47797049]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+columns = 3
+
+[node name="Button" parent="Menu/Tab/List" unique_id=755637883 instance=ExtResource("4_23ovu")]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Tab/List/Button" unique_id=146107942]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+stretch_mode = 3
+
+[node name="Info" type="VBoxContainer" parent="Menu" unique_id=1663102138]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 24.0
+offset_right = 248.0
+offset_bottom = 136.0
+theme_override_constants/separation = 1
+
+[node name="Button" parent="Menu/Info" unique_id=1210826483 instance=ExtResource("4_23ovu")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Menu/Info/Button" unique_id=1210173124]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+stretch_mode = 3
+
+[node name="Title" type="Label" parent="Menu/Info" unique_id=1831913951]
+layout_mode = 2
+theme = ExtResource("3_p3505")
+theme_type_variation = &"label_black"
+text = "??????????"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Info/Title" unique_id=1104702154]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Kitchen" type="Label" parent="Menu/Info" unique_id=499557743]
+layout_mode = 2
+theme = ExtResource("3_p3505")
+theme_type_variation = &"label_black"
+text = "????? dish"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Price" type="Label" parent="Menu/Info" unique_id=1079468822]
+layout_mode = 2
+theme = ExtResource("3_p3505")
+theme_type_variation = &"label_black"
+text = "??$"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Nav" type="TextureRect" parent="Menu" unique_id=1578017584]
 layout_mode = 0
@@ -294,7 +459,20 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=1145291459]
+[node name="Outline4" type="NinePatchRect" parent="Menu/ColorRect" unique_id=1394697202]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 63.0
+offset_right = 42.0
+offset_bottom = 83.0
+texture = ExtResource("5_23ovu")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="NavItems" type="VBoxContainer" parent="Menu" unique_id=1145291459]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 24.0
@@ -302,17 +480,100 @@ offset_right = 40.0
 offset_bottom = 80.0
 theme_override_constants/separation = 3
 
-[node name="Button" parent="Menu/VBoxContainer" unique_id=755637883 instance=ExtResource("6_mlk18")]
+[node name="Starters" parent="Menu/NavItems" unique_id=848139796 instance=ExtResource("6_mlk18")]
 layout_mode = 2
-theme_type_variation = &"Button_blue"
+theme_type_variation = &"Button_green"
 
-[node name="Button2" parent="Menu/VBoxContainer" unique_id=793847348 instance=ExtResource("6_mlk18")]
+[node name="Active" type="NinePatchRect" parent="Menu/NavItems/Starters" unique_id=940110473]
+modulate = Color(0.17254902, 0.7647059, 0.9019608, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mlk18")
+region_rect = Rect2(0, 0, 18, 18)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="Mains" parent="Menu/NavItems" unique_id=793847348 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_yellow"
 
-[node name="Button3" parent="Menu/VBoxContainer" unique_id=1687453199 instance=ExtResource("6_mlk18")]
+[node name="Active" type="NinePatchRect" parent="Menu/NavItems/Mains" unique_id=451884473]
+visible = false
+modulate = Color(0.17254902, 0.7647059, 0.9019608, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mlk18")
+region_rect = Rect2(0, 0, 18, 18)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="Desserts" parent="Menu/NavItems" unique_id=1687453199 instance=ExtResource("6_mlk18")]
 layout_mode = 2
-theme_type_variation = &"Button_purple"
+theme_type_variation = &"Button_pink"
+
+[node name="Active" type="NinePatchRect" parent="Menu/NavItems/Desserts" unique_id=1120606215]
+visible = false
+modulate = Color(0.17254902, 0.7647059, 0.9019608, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mlk18")
+region_rect = Rect2(0, 0, 18, 18)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="Drinks" parent="Menu/NavItems" unique_id=1240402116 instance=ExtResource("6_mlk18")]
+layout_mode = 2
+theme_type_variation = &"Button_blue"
+
+[node name="Active" type="NinePatchRect" parent="Menu/NavItems/Drinks" unique_id=129680813]
+visible = false
+modulate = Color(0.17254902, 0.7647059, 0.9019608, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mlk18")
+region_rect = Rect2(0, 0, 18, 18)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
 
 [node name="Anims" type="AnimationPlayer" parent="Menu" unique_id=2037592935]
 libraries/ = SubResource("AnimationLibrary_wa5vk")
@@ -424,7 +685,7 @@ theme_type_variation = &"Button_purple"
 [node name="Anims" type="AnimationPlayer" parent="Chefs" unique_id=2058757555]
 libraries/ = SubResource("AnimationLibrary_wa5vk")
 
-[node name="Rating" type="ColorRect" parent="." unique_id=137214127]
+[node name="Stats" type="ColorRect" parent="." unique_id=137214127]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -435,18 +696,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.74509805)
 
-[node name="Nav" type="TextureRect" parent="Rating" unique_id=1387458990]
+[node name="Nav" type="TextureRect" parent="Stats" unique_id=1387458990]
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 16.0
 texture = ExtResource("8_23ovu")
 
-[node name="Close" parent="Rating/Nav" unique_id=808543018 instance=ExtResource("2_66mx0")]
+[node name="Close" parent="Stats/Nav" unique_id=808543018 instance=ExtResource("2_66mx0")]
 layout_mode = 0
 offset_left = 240.0
 offset_right = 256.0
 
-[node name="Title" type="Label" parent="Rating/Nav" unique_id=122143939]
+[node name="Title" type="Label" parent="Stats/Nav" unique_id=122143939]
 layout_mode = 0
 offset_left = 4.0
 offset_right = 191.0
@@ -455,21 +716,21 @@ theme = ExtResource("3_p3505")
 text = "Rating"
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Rating/Nav" unique_id=763335956]
+[node name="TextureRect" type="TextureRect" parent="Stats/Nav" unique_id=763335956]
 modulate = Color(1, 1, 1, 0.15686275)
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 16.0
 texture = ExtResource("4_fs62j")
 
-[node name="ColorRect" type="ColorRect" parent="Rating" unique_id=377692237]
+[node name="ColorRect" type="ColorRect" parent="Stats" unique_id=377692237]
 layout_mode = 0
 offset_top = 16.0
 offset_right = 32.0
 offset_bottom = 144.0
 color = Color(0.056291588, 0.056291603, 0.056291595, 1)
 
-[node name="Outline" type="NinePatchRect" parent="Rating/ColorRect" unique_id=32503712]
+[node name="Outline" type="NinePatchRect" parent="Stats/ColorRect" unique_id=32503712]
 layout_mode = 1
 offset_left = 22.0
 offset_top = 6.0
@@ -482,7 +743,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Outline2" type="NinePatchRect" parent="Rating/ColorRect" unique_id=1660500145]
+[node name="Outline2" type="NinePatchRect" parent="Stats/ColorRect" unique_id=1660500145]
 layout_mode = 1
 offset_left = 22.0
 offset_top = 25.0
@@ -495,7 +756,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Outline3" type="NinePatchRect" parent="Rating/ColorRect" unique_id=1388731034]
+[node name="Outline3" type="NinePatchRect" parent="Stats/ColorRect" unique_id=1388731034]
 layout_mode = 1
 offset_left = 22.0
 offset_top = 44.0
@@ -508,7 +769,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Rating" unique_id=1492538744]
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats" unique_id=1492538744]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 24.0
@@ -516,17 +777,17 @@ offset_right = 40.0
 offset_bottom = 80.0
 theme_override_constants/separation = 3
 
-[node name="Button" parent="Rating/VBoxContainer" unique_id=1336333087 instance=ExtResource("6_mlk18")]
+[node name="Button" parent="Stats/VBoxContainer" unique_id=1336333087 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_blue"
 
-[node name="Button2" parent="Rating/VBoxContainer" unique_id=442696932 instance=ExtResource("6_mlk18")]
+[node name="Button2" parent="Stats/VBoxContainer" unique_id=442696932 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_yellow"
 
-[node name="Button3" parent="Rating/VBoxContainer" unique_id=1999492530 instance=ExtResource("6_mlk18")]
+[node name="Button3" parent="Stats/VBoxContainer" unique_id=1999492530 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_purple"
 
-[node name="Anims" type="AnimationPlayer" parent="Rating" unique_id=1386293160]
+[node name="Anims" type="AnimationPlayer" parent="Stats" unique_id=1386293160]
 libraries/ = SubResource("AnimationLibrary_wa5vk")
