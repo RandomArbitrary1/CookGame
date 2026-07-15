@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://y6vvlljbla8u"]
+
+[sub_resource type="Curve" id="Curve_fimx5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_msvew"]
+curve = SubResource("Curve_fimx5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0sci2"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 88.24
+initial_velocity_max = 165.05
+gravity = Vector3(0, 59.01, 0)
+scale_curve = SubResource("CurveTexture_msvew")
+
+[node name="SparkleExplosion" type="GPUParticles2D" unique_id=1582683116]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_0sci2")
