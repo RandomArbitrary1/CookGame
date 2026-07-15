@@ -38,8 +38,8 @@ func select():
 		if obj.is_in_group("chef"):
 			selected_object = obj
 			break
-	var collision = hitbox.get_overlapping_areas()
-	for obj in collisions:
+	var coll = hitbox.get_overlapping_areas()
+	for obj in coll:
 		if obj.is_in_group("dish"): # Dish checked after chefs are. To get info about dish
 			selected_object = obj
 			print(obj)

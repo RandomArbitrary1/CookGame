@@ -39,6 +39,7 @@ animations = [{
 }]
 
 [node name="SelectableSprite" type="AnimatedSprite2D" unique_id=1181217773]
+position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_3a4k1")
 autoplay = "default"
 frame_progress = 0.9974454

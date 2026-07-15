@@ -23,10 +23,10 @@ func move_process(delta):
 	var distance = global_position.distance_to(nav_agent.target_position)
 	if distance < 2.5:
 		velocity = Vector2.ZERO
+		#print("I'm done walking")
 		return
-		
 	var next_point = nav_agent.get_next_path_position()
-	var direction = (next_point - global_position).normalized()
-	velocity = direction * speed * delta
-	
+	var dir = (next_point - global_position).normalized()
+	velocity = dir * speed * delta
+
 	move_and_slide()
