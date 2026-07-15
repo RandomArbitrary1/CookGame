@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://6xxidnyjocpr"]
+
+[ext_resource type="Texture2D" uid="uid://deugotov1vw1e" path="res://assets/placeables/plate_prototype1.png" id="1_djm0y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dn8sm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_djm0y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_djm0y"]
+radius = 5.0
+
+[node name="Plate" type="Node2D" unique_id=1663768052 groups=["dish"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1068241218]
+sprite_frames = SubResource("SpriteFrames_dn8sm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1273101732]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1752899188]
+shape = SubResource("CircleShape2D_djm0y")

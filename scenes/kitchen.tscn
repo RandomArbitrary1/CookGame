@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://c0qjdr4ibm8vi" path="res://assets/environment/Kitchen.tres" id="1_7ilqw"]
 [ext_resource type="PackedScene" uid="uid://qvo4jksb0bkj" path="res://assets/characters/chef/chef.tscn" id="2_mrp8g"]
 [ext_resource type="PackedScene" uid="uid://by6c74ta1wq3l" path="res://assets/characters/player/player.tscn" id="3_2b6py"]
+[ext_resource type="PackedScene" uid="uid://6xxidnyjocpr" path="res://assets/placeables/plate.tscn" id="4_bems3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2b6py"]
 vertices = PackedVector2Array(186, 90, 186, 54, 233.21094, 86, 233.57031, 118, 218, 26, 233.25, 26, 233.39063, 38, 233.21094, 38, 218, 36.65625, 233.39063, 54, 233.21094, 54, 233.39063, 70, 233.21094, 70, 233.39063, 86, 73.21094, 54, 73.390625, 70, 73.21094, 70, 26, 42, 89.21094, 118, 89.390625, 134, 10, 134, 22.570313, 122, 198.57031, 42, 10, 122, 22.75, 106, 26, 106, 182.57031, 106, 182.75, 90, 73.609375, 106, 198.61719, 37.078125)
@@ -29,3 +30,6 @@ position = Vector2(62, 83)
 position = Vector2(88, 107)
 
 [node name="Player" parent="." unique_id=366630141 instance=ExtResource("3_2b6py")]
+
+[node name="Plate" parent="." unique_id=1663768052 groups=["dish"] instance=ExtResource("4_bems3")]
+position = Vector2(168, 23)
