@@ -31,5 +31,5 @@ position = Vector2(88, 107)
 
 [node name="Player" parent="." unique_id=366630141 instance=ExtResource("3_2b6py")]
 
-[node name="Plate" parent="." unique_id=1663768052 groups=["dish"] instance=ExtResource("4_bems3")]
+[node name="Plate" parent="." unique_id=1663768052 instance=ExtResource("4_bems3")]
 position = Vector2(168, 23)

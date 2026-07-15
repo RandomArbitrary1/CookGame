@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://5rhgibit65jq" path="res://assets/characters/chef/img/outfit1.png" id="3_4e7ff"]
 [ext_resource type="Texture2D" uid="uid://dofkevv20kig" path="res://assets/characters/chef/img/outfit1_mirrored.png" id="4_4e7ff"]
 [ext_resource type="Script" uid="uid://bbndw3pjrg375" path="res://scripts/chef/animation.gd" id="5_jskf3"]
+[ext_resource type="Texture2D" uid="uid://c3igv8bk4aphm" path="res://assets/vfx/light1.png" id="6_43a53"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_035l4"]
 radius = 1.4142135
@@ -40,10 +41,15 @@ script = ExtResource("1_035l4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=415656860]
 shape = SubResource("CircleShape2D_035l4")
 
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1603842654]
+texture = ExtResource("6_43a53")
+
 [node name="AnimBody" type="AnimatedSprite2D" parent="." unique_id=806678805]
+light_mask = 0
 sprite_frames = SubResource("SpriteFrames_vjmbp")
 
 [node name="AnimOutfit" type="AnimatedSprite2D" parent="." unique_id=1202056052]
+light_mask = 0
 sprite_frames = SubResource("SpriteFrames_jskf3")
 autoplay = "default"
 frame = 1
@@ -53,5 +59,5 @@ frame_progress = 0.32967696
 script = ExtResource("5_jskf3")
 
 [node name="NavAgent2d" type="NavigationAgent2D" parent="." unique_id=466977877]
-avoidance_enabled = true
-radius = 16.0
+path_desired_distance = 5.0
+radius = 32.0

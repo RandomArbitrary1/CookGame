@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://djvm7n6aqb72x" path="res://assets/characters/player/img/mouse1.png" id="1_c3abi"]
 [ext_resource type="Script" uid="uid://tfg60vpsima1" path="res://scripts/player/player.gd" id="1_prble"]
 [ext_resource type="Texture2D" uid="uid://c3igv8bk4aphm" path="res://assets/vfx/light1.png" id="3_c1sar"]
+[ext_resource type="Shader" uid="uid://budcnmprj73j1" path="res://scripts/shaders/highlight.gdshader" id="4_g1agn"]
 [ext_resource type="Texture2D" uid="uid://dk10bdjunp8ea" path="res://assets/vfx/grid_highlight.png" id="4_ju3fu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prble"]
@@ -30,7 +31,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D" unique_id=366630141]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uiske"]
+shader = ExtResource("4_g1agn")
+
+[node name="Player" type="Node2D" unique_id=366630141 groups=["player"]]
 script = ExtResource("1_prble")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1476960874]
@@ -42,8 +46,13 @@ shape = SubResource("CircleShape2D_prble")
 visible = false
 sprite_frames = SubResource("SpriteFrames_prble")
 
+[node name="GridHighlight" type="AnimatedSprite2D" parent="." unique_id=1137429648]
+sprite_frames = SubResource("SpriteFrames_g1agn")
+
+[node name="GridHighlight2" type="AnimatedSprite2D" parent="GridHighlight" unique_id=710994443]
+visible = false
+material = SubResource("ShaderMaterial_uiske")
+sprite_frames = SubResource("SpriteFrames_g1agn")
+
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1030284774]
 texture = ExtResource("3_c1sar")
-
-[node name="GridHighlight" type="AnimatedSprite2D" parent="." unique_id=710994443]
-sprite_frames = SubResource("SpriteFrames_g1agn")
