@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://y6vvlljbla8u"]
 
+[ext_resource type="Script" uid="uid://ba5pjjbw2j0ac" path="res://scripts/vfx/sparkle_explosion.gd" id="1_msvew"]
+
 [sub_resource type="Curve" id="Curve_fimx5"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -10,14 +12,17 @@ curve = SubResource("Curve_fimx5")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0sci2"]
 particle_flag_disable_z = true
 spread = 180.0
-initial_velocity_min = 88.24
-initial_velocity_max = 165.05
+initial_velocity_min = 25.0
+initial_velocity_max = 67.0
 gravity = Vector3(0, 59.01, 0)
 scale_curve = SubResource("CurveTexture_msvew")
+color = Color(0.79954326, 0.89370257, 0.9999997, 1)
 
 [node name="SparkleExplosion" type="GPUParticles2D" unique_id=1582683116]
 emitting = false
+amount = 16
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_0sci2")
+script = ExtResource("1_msvew")
