@@ -55,3 +55,5 @@ func action():
 func pick_up(item_string):
 	if !held_item:
 		held_item = item_string
+func place():
+	held_item = null
