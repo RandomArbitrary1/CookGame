@@ -1,13 +1,16 @@
 extends CharacterBody2D
-
+# chef enters gridspot when reached
 @onready var nav_agent: NavigationAgent2D = $NavAgent2d
 @onready var tile_map: TileMapLayer = $"../NavigationRegion2D/TileMapLayer"
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var test_audio: AudioStreamPlayer2D = $TestAudio
 var speed = 2000.0
 var direction = Vector2(0.0,0.0)
 var player = null
 var done_following = true
 var time_taken_collision = 0.0
+var work_state = ""
+var holding_item = null
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -22,21 +25,27 @@ func _physics_process(delta: float) -> void:
 func give_target(given_pos):
 	var pos = Vector2(int(given_pos[0]),int(given_pos[1]))
 	nav_agent.target_position = pos
+	var cell = tile_map.local_to_map(tile_map.to_local(pos))
+	var tile_data: TileData = tile_map.get_cell_tile_data(cell)
+	if tile_data.get_custom_data("tile_type"):
+		cell = Vector2(cell[0]+0.5,cell[1]+0.5)
+		var cal = cell * 16
+		nav_agent.target_position = cal
 	done_following = false
 
 func move_process(delta):
-	#var vel = velocity
-	if !done_following:
+	if nav_agent.is_navigation_finished():
 		if !done_following:
-			velocity = Vector2.ZERO
-			print("I'm done walking, lets see what im gonna do")
-			var cell = tile_map.local_to_map(tile_map.to_local(nav_agent.target_position))
-			var tile_data: TileData = tile_map.get_cell_tile_data(cell)
-			print(tile_data.get_custom_data("tile_type"))
+			action()
 			done_following = true
-		return
 	var next_point = nav_agent.get_next_path_position()
 	var dir = (next_point - global_position).normalized()
 	velocity = dir * speed * delta
 
 	move_and_slide()
+	
+func action():
+	test_audio.play()
+	var cell = tile_map.local_to_map(tile_map.to_local(nav_agent.target_position))
+	var tile_data: TileData = tile_map.get_cell_tile_data(cell)
+	print(tile_data.get_custom_data("tile_type"))

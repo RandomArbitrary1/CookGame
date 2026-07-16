@@ -6,6 +6,7 @@ const TARGET_SPRITE = preload("res://assets/vfx/target_sprite.tscn")
 @onready var tile_map: TileMapLayer = $"../NavigationRegion2D/TileMapLayer"
 var selected_object = null
 const SELECTABLE_SPRITE = preload("res://assets/vfx/selectable_sprite.tscn")
+const SPARKLE_EXPLOSION = preload("res://assets/vfx/sparkle_explosion.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -48,7 +49,9 @@ func select():
 func place():
 	if selected_object:
 		selected_object.give_target(global_position)
-		
+		var vfx = SPARKLE_EXPLOSION.instantiate()
+		add_child(vfx)
+
 func calculate_grid_highlight():
 	var cell = tile_map.local_to_map(tile_map.to_local(global_position))
 	grid_highlight.global_position = tile_map.to_global(tile_map.map_to_local(cell))

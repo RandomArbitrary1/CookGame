@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dofkevv20kig" path="res://assets/characters/chef/img/outfit1_mirrored.png" id="4_4e7ff"]
 [ext_resource type="Script" uid="uid://bbndw3pjrg375" path="res://scripts/chef/animation.gd" id="5_jskf3"]
 [ext_resource type="Texture2D" uid="uid://c3igv8bk4aphm" path="res://assets/vfx/light1.png" id="6_43a53"]
+[ext_resource type="AudioStream" uid="uid://ea0kwws58juv" path="res://assets/audio/sfx/coin1.mp3" id="7_a7xdj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_035l4"]
 radius = 1.4142135
@@ -61,3 +62,9 @@ script = ExtResource("5_jskf3")
 [node name="NavAgent2d" type="NavigationAgent2D" parent="." unique_id=466977877]
 path_desired_distance = 5.0
 radius = 32.0
+
+[node name="TestAudio" type="AudioStreamPlayer2D" parent="." unique_id=2086142442]
+stream = ExtResource("7_a7xdj")
+volume_db = -5.0
+pitch_scale = 4.0
+bus = &"Sounds"
