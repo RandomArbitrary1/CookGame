@@ -48,9 +48,10 @@ func action():
 	var cell = tile_map.local_to_map(tile_map.to_local(nav_agent.target_position))
 	var tile_data: TileData = tile_map.get_cell_tile_data(cell)
 	var tile_sub_data = tile_data.get_custom_data("tile_type")
-	if tile_sub_data == "crate":
+	if tile_sub_data == "storage":
 		pick_up(tile_sub_data)
-		print("IM TOUCHING A CRATE")
+		print("storage reached mofossss")
+	print("I have this:" + str(held_item))
 		
 func pick_up(item_string):
 	if !held_item:

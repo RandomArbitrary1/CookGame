@@ -38,9 +38,9 @@ mouse1.png::CompressedTexture2D::7835100056688951541::1783982857::1783982860::1:
 selectable_anim.png::CompressedTexture2D::6174506385188352438::1784131008::1784131046::1::::<><><>0<>0<>500736eb8ab6fe6418369eedcd9aa656<>res://.godot/imported/selectable_anim.png-2ad8717d013718acbdc070533990ed38.ctex::
 target.png::CompressedTexture2D::5005705506090818415::1783984738::1783984742::1::::<><><>0<>0<>d35b1dd37a29f285828caf74a21042e7<>res://.godot/imported/target.png-411f0acd51602c1c44a1f5e9f4cd8ab5.ctex::
 target_anim.png::CompressedTexture2D::1063846078190138039::1784036680::1784036681::1::::<><><>0<>0<>5b262b372112057d2e45344d10a8fda9<>res://.godot/imported/target_anim.png-6a2ec6fef5c1fdc8615585a3fe0d524d.ctex::
-::res://assets/environment/::1784245171
-Kitchen.tres::TileSet::6561145250780191750::1784245170::0::1::::<><><>0<>0<><>::uid://spi6a1tso82x::::res://assets/environment/KitchenTiles.png
-KitchenTiles.png::CompressedTexture2D::1294905988401494305::1784245171::1784245192::1::::<><><>0<>0<>4adf636df811cf2d47425d24e86cafa9<>res://.godot/imported/KitchenTiles.png-7b5cebba322489d033a28a18cd8f39c8.ctex::
+::res://assets/environment/::1784245786
+Kitchen.tres::TileSet::6561145250780191750::1784245300::0::1::::<><><>0<>0<><>::uid://spi6a1tso82x::::res://assets/environment/KitchenTiles.png
+KitchenTiles.png::CompressedTexture2D::1294905988401494305::1784245786::1784245788::1::::<><><>0<>0<>4adf636df811cf2d47425d24e86cafa9<>res://.godot/imported/KitchenTiles.png-7b5cebba322489d033a28a18cd8f39c8.ctex::
 KitchenTiles.tres::AtlasTexture::2099606986693463495::1784129726::0::1::::<><><>0<>0<><>::uid://spi6a1tso82x::::res://assets/environment/KitchenTiles.png
 ::res://assets/fonts/::1783946983
 ::res://assets/objects/::1783947121
@@ -48,7 +48,7 @@ KitchenTiles.tres::AtlasTexture::2099606986693463495::1784129726::0::1::::<><><>
 plate.tscn::PackedScene::2224745797062784727::1784123132::0::1::::<><><>0<>0<><>::uid://deugotov1vw1e::::res://assets/placeables/plate_prototype1.png
 plate_prototype1.png::CompressedTexture2D::7481695304344550456::1784039274::1784039279::1::::<><><>0<>0<>8a2276304ed1ba3393b0dc840b80451a<>res://.godot/imported/plate_prototype1.png-0673736e2eeb869dac94f0eefe0a0034.ctex::
 tomato.png::CompressedTexture2D::978219467197273924::1784224987::1784224993::1::::<><><>0<>0<>9e8c92903915e68a466320d1cd54d3b6<>res://.godot/imported/tomato.png-e3e074090dce2f772701961a3f80ae28.ctex::
-::res://assets/ui/::1784245171
+::res://assets/ui/::1784245192
 button.gd::GDScript::6439467075642743069::1784245171::0::1::::<>BaseButton<><>0<>0<><>::
 button.png::CompressedTexture2D::4742433282949624315::1784065377::1784065390::1::::<><><>0<>0<>1668d9cbd8e1dc38cfbaf86b5ded4440<>res://.godot/imported/button.png-473760ec7449fb30c95f607492aecb17.ctex::
 button.tscn::PackedScene::1052621472574905520::1784020768::0::1::::<><><>0<>0<><>::uid://mjl7udec3xc0::::res://assets/ui/UI.tres<>uid://dy8uxouvklif6::::res://assets/ui/button_outline.png<>uid://cx0lc1xx4rqkr::::res://assets/ui/button.gd
@@ -99,9 +99,9 @@ light1.png::CompressedTexture2D::6755047550220673414::1784121207::1784121212::1:
 selectable_sprite.tscn::PackedScene::4334557122225087215::1784129744::0::1::::<><><>0<>0<><>::uid://ct78hocr6qwy5::::res://assets/characters/player/img/selectable_anim.png
 sparkle_explosion.tscn::PackedScene::1749841111369117630::1784211220::0::1::::<><><>0<>0<><>::uid://ba5pjjbw2j0ac::::res://scripts/vfx/sparkle_explosion.gd
 target_sprite.tscn::PackedScene::2498745634416212229::1784070371::0::1::::<><><>0<>0<><>::uid://pflniibnc568::::res://assets/characters/player/img/target_anim.png
-::res://scenes/::1784245171
+::res://scenes/::1784245537
 Home.tscn::PackedScene::7065566485923569345::1784245171::0::1::::<><><>0<>0<><>::uid://bqllp2f34jpkv::::res://assets/ui/Navigation_plue.png<>uid://clffama5irg3j::::res://assets/ui/close.tscn<>uid://b1ermlat3iaen::::res://assets/ui/Navigation_pink.png<>uid://mjl7udec3xc0::::res://assets/ui/UI.tres<>uid://cvm8r5y24wn05::::res://assets/ui/icons/Chefs.png<>uid://c8u56p7wo51gc::::res://assets/ui/button_white.tscn<>uid://dp45hw1bi0bti::::res://assets/ui/icons/Menu.png<>uid://c2vxcfb6fcmui::::res://assets/ui/Navigation_grid.png<>uid://v5asgx8mfal8::::res://assets/ui/icons/Rating.png<>uid://bn3yaxwxs8jb2::::res://assets/ui/Button_back.png<>uid://o85r0jk3it4k::::res://assets/ui/button.tscn<>uid://b1bbsfd7tkq8e::::res://assets/ui/icons/Play.png<>uid://bil2pv2ar0jif::::res://assets/ui/Navigation_purple.png<>uid://dy8uxouvklif6::::res://assets/ui/button_outline.png<>uid://cp0b06bxh6fnn::::res://assets/ui/icons/Exit.png<>uid://bdoybnucjp5oi::::res://assets/ui/icons/Settings.png<>uid://cxy3xoh6ltntg::::res://assets/ui/time_white.png<>uid://bhp8gprhsy7s2::::res://assets/ui/time_black.png<>uid://b4213rdy6ffhi::::res://assets/ui/map_button.png<>uid://cx0lc1xx4rqkr::::res://assets/ui/button.gd<>uid://fsq5nd28r4ix::::res://assets/ui/icons/Starter.png<>uid://cxcodevkrwqq7::::res://assets/ui/icons/Main.png<>uid://dm877kqgtyluj::::res://assets/ui/map_border.png<>uid://cfbmimnk10lgq::::res://assets/ui/icons/Dessert.png<>uid://nlt1yf0v67ew::::res://assets/ui/icons/Drinks.png<>uid://brf4lecuimmmb::::res://assets/ui/icons/Active_chefs.png<>uid://dgsmthls31w74::::res://assets/ui/icons/Last_shift.png
-kitchen.tscn::PackedScene::5855441671209764433::1784244994::0::1::::<><><>0<>0<><>::uid://c0qjdr4ibm8vi::::res://assets/environment/Kitchen.tres<>uid://qvo4jksb0bkj::::res://assets/characters/chef/chef.tscn<>uid://by6c74ta1wq3l::::res://assets/characters/player/player.tscn<>uid://6xxidnyjocpr::::res://assets/placeables/plate.tscn
+kitchen.tscn::PackedScene::5855441671209764433::1784245537::0::1::::<><><>0<>0<><>::uid://c0qjdr4ibm8vi::::res://assets/environment/Kitchen.tres<>uid://qvo4jksb0bkj::::res://assets/characters/chef/chef.tscn<>uid://by6c74ta1wq3l::::res://assets/characters/player/player.tscn<>uid://6xxidnyjocpr::::res://assets/placeables/plate.tscn
 ui_test.tscn::PackedScene::2415718449971761565::1784152748::0::1::::<><><>0<>0<><>::uid://o85r0jk3it4k::::res://assets/ui/button.tscn<>uid://bqllp2f34jpkv::::res://assets/ui/Navigation_plue.png<>uid://clffama5irg3j::::res://assets/ui/close.tscn<>uid://mjl7udec3xc0::::res://assets/ui/UI.tres<>uid://c2vxcfb6fcmui::::res://assets/ui/Navigation_grid.png<>uid://bn3yaxwxs8jb2::::res://assets/ui/Button_back.png
 ::res://scripts/::1784119864
 ::res://scripts/chef/::1784245003
