@@ -201,6 +201,8 @@ var tab = \"Active\"
 var selected = null
 
 func updateChefs():
+	for i in self.get_node(\"Tabs/Active/Selected\").get_children():
+		i.disabled = i.get_index() > chefs.size()-1
 	if not selected:
 		self.get_node(\"Tabs/Active/Options/Add\").visible = true
 		self.get_node(\"Tabs/Active/Options/Switch\").visible = false
@@ -941,6 +943,7 @@ columns = 4
 custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 
 [node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button" unique_id=703427688]
 layout_mode = 0
@@ -952,6 +955,7 @@ stretch_mode = 3
 custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 
 [node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button2" unique_id=1983593000]
 layout_mode = 0
@@ -963,6 +967,7 @@ stretch_mode = 3
 custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 
 [node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button3" unique_id=720379235]
 layout_mode = 0
@@ -974,6 +979,7 @@ stretch_mode = 3
 custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 
 [node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button4" unique_id=459341628]
 layout_mode = 0
@@ -985,6 +991,7 @@ stretch_mode = 3
 custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 
 [node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button5" unique_id=1936354597]
 layout_mode = 0
@@ -996,6 +1003,7 @@ stretch_mode = 3
 custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 
 [node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button6" unique_id=1747529801]
 layout_mode = 0
@@ -1007,6 +1015,7 @@ stretch_mode = 3
 custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 
 [node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button7" unique_id=1108138636]
 layout_mode = 0
@@ -1018,6 +1027,7 @@ stretch_mode = 3
 custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 
 [node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button8" unique_id=488620941]
 layout_mode = 0
