@@ -4,12 +4,29 @@
 [ext_resource type="PackedScene" uid="uid://clffama5irg3j" path="res://assets/ui/close.tscn" id="2_66mx0"]
 [ext_resource type="Texture2D" uid="uid://b1ermlat3iaen" path="res://assets/ui/Navigation_pink.png" id="3_fs62j"]
 [ext_resource type="Theme" uid="uid://mjl7udec3xc0" path="res://assets/ui/UI.tres" id="3_p3505"]
+[ext_resource type="Texture2D" uid="uid://cvm8r5y24wn05" path="res://assets/ui/icons/Chefs.png" id="3_x5c8i"]
 [ext_resource type="PackedScene" uid="uid://c8u56p7wo51gc" path="res://assets/ui/button_white.tscn" id="4_23ovu"]
+[ext_resource type="Texture2D" uid="uid://dp45hw1bi0bti" path="res://assets/ui/icons/Menu.png" id="4_dch01"]
 [ext_resource type="Texture2D" uid="uid://c2vxcfb6fcmui" path="res://assets/ui/Navigation_grid.png" id="4_fs62j"]
+[ext_resource type="Texture2D" uid="uid://v5asgx8mfal8" path="res://assets/ui/icons/Rating.png" id="5_1idv1"]
 [ext_resource type="Texture2D" uid="uid://bn3yaxwxs8jb2" path="res://assets/ui/Button_back.png" id="5_23ovu"]
 [ext_resource type="PackedScene" uid="uid://o85r0jk3it4k" path="res://assets/ui/button.tscn" id="6_mlk18"]
+[ext_resource type="Texture2D" uid="uid://b1bbsfd7tkq8e" path="res://assets/ui/icons/Play.png" id="6_n4517"]
 [ext_resource type="Texture2D" uid="uid://bil2pv2ar0jif" path="res://assets/ui/Navigation_purple.png" id="8_23ovu"]
 [ext_resource type="Texture2D" uid="uid://dy8uxouvklif6" path="res://assets/ui/button_outline.png" id="8_mlk18"]
+[ext_resource type="Texture2D" uid="uid://cp0b06bxh6fnn" path="res://assets/ui/icons/Exit.png" id="10_w1b7w"]
+[ext_resource type="Texture2D" uid="uid://bdoybnucjp5oi" path="res://assets/ui/icons/Settings.png" id="11_n1rrq"]
+[ext_resource type="Texture2D" uid="uid://cxy3xoh6ltntg" path="res://assets/ui/time_white.png" id="14_1idv1"]
+[ext_resource type="Texture2D" uid="uid://bhp8gprhsy7s2" path="res://assets/ui/time_black.png" id="15_n4517"]
+[ext_resource type="Texture2D" uid="uid://b4213rdy6ffhi" path="res://assets/ui/map_button.png" id="17_biiq1"]
+[ext_resource type="Script" uid="uid://cx0lc1xx4rqkr" path="res://assets/ui/button.gd" id="18_6g2ad"]
+[ext_resource type="Texture2D" uid="uid://fsq5nd28r4ix" path="res://assets/ui/icons/Starter.png" id="18_r1riy"]
+[ext_resource type="Texture2D" uid="uid://cxcodevkrwqq7" path="res://assets/ui/icons/Main.png" id="19_88yq0"]
+[ext_resource type="Texture2D" uid="uid://dm877kqgtyluj" path="res://assets/ui/map_border.png" id="19_rpj2a"]
+[ext_resource type="Texture2D" uid="uid://cfbmimnk10lgq" path="res://assets/ui/icons/Dessert.png" id="20_dct4q"]
+[ext_resource type="Texture2D" uid="uid://nlt1yf0v67ew" path="res://assets/ui/icons/Drinks.png" id="21_k40ht"]
+[ext_resource type="Texture2D" uid="uid://brf4lecuimmmb" path="res://assets/ui/icons/Active_chefs.png" id="23_dct4q"]
+[ext_resource type="Texture2D" uid="uid://dgsmthls31w74" path="res://assets/ui/icons/Last_shift.png" id="25_k40ht"]
 
 [sub_resource type="GDScript" id="GDScript_23ovu"]
 resource_name = "Home"
@@ -194,7 +211,7 @@ color = Color(0.056291588, 0.056291603, 0.056291595, 1)
 layout_mode = 1
 offset_left = 14.0
 offset_top = -10.0
-offset_right = 64.0
+offset_right = 60.0
 offset_bottom = 10.0
 texture = ExtResource("5_23ovu")
 region_rect = Rect2(0, 0, 20, 20)
@@ -205,9 +222,9 @@ patch_margin_bottom = 10
 
 [node name="Outline2" type="NinePatchRect" parent="Nav" unique_id=567315501]
 layout_mode = 1
-offset_left = 63.0
+offset_left = 59.0
 offset_top = -10.0
-offset_right = 114.0
+offset_right = 106.0
 offset_bottom = 10.0
 texture = ExtResource("5_23ovu")
 region_rect = Rect2(0, 0, 20, 20)
@@ -218,9 +235,9 @@ patch_margin_bottom = 10
 
 [node name="Outline3" type="NinePatchRect" parent="Nav" unique_id=332416448]
 layout_mode = 1
-offset_left = 113.0
+offset_left = 105.0
 offset_top = -10.0
-offset_right = 163.0
+offset_right = 152.0
 offset_bottom = 10.0
 texture = ExtResource("5_23ovu")
 region_rect = Rect2(0, 0, 20, 20)
@@ -231,7 +248,7 @@ patch_margin_bottom = 10
 
 [node name="Outline4" type="NinePatchRect" parent="Nav" unique_id=655699311]
 layout_mode = 1
-offset_left = 162.0
+offset_left = 151.0
 offset_top = -10.0
 offset_right = 241.0
 offset_bottom = 10.0
@@ -255,24 +272,136 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"Button_blue"
 
+[node name="Icon" type="TextureRect" parent="NavItems/Chefs" unique_id=1022700405]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_x5c8i")
+
 [node name="Menu" parent="NavItems" unique_id=913243566 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"Button_pink"
+
+[node name="Icon" type="TextureRect" parent="NavItems/Menu" unique_id=1276718457]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_dch01")
 
 [node name="Stats" parent="NavItems" unique_id=230183094 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"Button_purple"
 
+[node name="Icon" type="TextureRect" parent="NavItems/Stats" unique_id=1642998057]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_1idv1")
+
 [node name="Play" parent="NavItems" unique_id=1468978236 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.6
+size_flags_stretch_ratio = 2.0
 theme_type_variation = &"Button_green"
-text = "Start shift"
+text = "      Start shift"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1949734018]
+[node name="Icon" type="TextureRect" parent="NavItems/Play" unique_id=1680631415]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -6.0
+offset_right = -20.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_n4517")
+
+[node name="Time" type="HBoxContainer" parent="." unique_id=436199343]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 251.0
+offset_bottom = 16.0
+localize_numeral_system = false
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="Time" type="Label" parent="Time" unique_id=374954968]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme = ExtResource("3_p3505")
+theme_type_variation = &"label_black"
+text = "Morning"
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Time/Time" unique_id=1946736924]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_1idv1")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 8
+
+[node name="Day" type="Label" parent="Time" unique_id=1165384193]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme = ExtResource("3_p3505")
+text = "Day 1"
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Time/Day" unique_id=155466885]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_n4517")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 8
+
+[node name="Options" type="VBoxContainer" parent="." unique_id=1949734018]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
@@ -280,13 +409,62 @@ offset_right = 19.0
 offset_bottom = 43.0
 theme_override_constants/separation = 2
 
-[node name="Settings" parent="VBoxContainer" unique_id=327861426 instance=ExtResource("6_mlk18")]
+[node name="Settings" parent="Options" unique_id=327861426 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Menu" parent="VBoxContainer" unique_id=566684823 instance=ExtResource("6_mlk18")]
+[node name="Icon" type="TextureRect" parent="Options/Settings" unique_id=882275955]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_w1b7w")
+
+[node name="Menu" parent="Options" unique_id=566684823 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Options/Menu" unique_id=1362225758]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_n1rrq")
+
+[node name="Map" type="TextureButton" parent="." unique_id=844900317]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 20.0
+offset_right = 252.0
+offset_bottom = 42.0
+texture_normal = ExtResource("17_biiq1")
+script = ExtResource("18_6g2ad")
+
+[node name="Outline" type="TextureRect" parent="Map" unique_id=372403948]
+visible = false
+modulate = Color(0.17254902, 0.7647059, 0.9019608, 1)
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 23.0
+offset_bottom = 23.0
+texture = ExtResource("19_rpj2a")
 
 [node name="Menu" type="ColorRect" parent="." unique_id=828887166]
 visible = false
@@ -503,6 +681,21 @@ patch_margin_top = 9
 patch_margin_right = 9
 patch_margin_bottom = 9
 
+[node name="Icon" type="TextureRect" parent="Menu/NavItems/Starters" unique_id=225542950]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_r1riy")
+
 [node name="Mains" parent="Menu/NavItems" unique_id=793847348 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_yellow"
@@ -526,6 +719,21 @@ patch_margin_left = 9
 patch_margin_top = 9
 patch_margin_right = 9
 patch_margin_bottom = 9
+
+[node name="Icon" type="TextureRect" parent="Menu/NavItems/Mains" unique_id=105571560]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_88yq0")
 
 [node name="Desserts" parent="Menu/NavItems" unique_id=1687453199 instance=ExtResource("6_mlk18")]
 layout_mode = 2
@@ -551,6 +759,21 @@ patch_margin_top = 9
 patch_margin_right = 9
 patch_margin_bottom = 9
 
+[node name="Icon" type="TextureRect" parent="Menu/NavItems/Desserts" unique_id=1093557710]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_dct4q")
+
 [node name="Drinks" parent="Menu/NavItems" unique_id=1240402116 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_blue"
@@ -575,6 +798,21 @@ patch_margin_top = 9
 patch_margin_right = 9
 patch_margin_bottom = 9
 
+[node name="Icon" type="TextureRect" parent="Menu/NavItems/Drinks" unique_id=613041730]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_k40ht")
+
 [node name="Anims" type="AnimationPlayer" parent="Menu" unique_id=2037592935]
 libraries/ = SubResource("AnimationLibrary_wa5vk")
 
@@ -588,6 +826,71 @@ offset_bottom = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.74509805)
+
+[node name="Tabs" type="Control" parent="Chefs" unique_id=1660264906]
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 248.0
+offset_bottom = 136.0
+
+[node name="Active" type="Control" parent="Chefs/Tabs" unique_id=1048463015]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Selected" type="HBoxContainer" parent="Chefs/Tabs/Active" unique_id=1879918506]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 40.0
+theme_override_constants/separation = 3
+
+[node name="Button" parent="Chefs/Tabs/Active/Selected" unique_id=1276375037 instance=ExtResource("4_23ovu")]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button" unique_id=703427688]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+stretch_mode = 3
+
+[node name="Button2" parent="Chefs/Tabs/Active/Selected" unique_id=2053646276 instance=ExtResource("4_23ovu")]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button2" unique_id=1983593000]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+stretch_mode = 3
+
+[node name="Button3" parent="Chefs/Tabs/Active/Selected" unique_id=114678574 instance=ExtResource("4_23ovu")]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button3" unique_id=720379235]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+stretch_mode = 3
+
+[node name="Button4" parent="Chefs/Tabs/Active/Selected" unique_id=1793093933 instance=ExtResource("4_23ovu")]
+custom_minimum_size = Vector2(40, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button4" unique_id=459341628]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+stretch_mode = 3
 
 [node name="Nav" type="TextureRect" parent="Chefs" unique_id=504004164]
 layout_mode = 0
@@ -649,19 +952,6 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Outline3" type="NinePatchRect" parent="Chefs/ColorRect" unique_id=1817977229]
-layout_mode = 1
-offset_left = 22.0
-offset_top = 44.0
-offset_right = 42.0
-offset_bottom = 64.0
-texture = ExtResource("5_23ovu")
-region_rect = Rect2(0, 0, 20, 20)
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Chefs" unique_id=2117476630]
 layout_mode = 0
 offset_left = 8.0
@@ -670,17 +960,43 @@ offset_right = 40.0
 offset_bottom = 80.0
 theme_override_constants/separation = 3
 
-[node name="Button" parent="Chefs/VBoxContainer" unique_id=1689092950 instance=ExtResource("6_mlk18")]
+[node name="Active" parent="Chefs/VBoxContainer" unique_id=1689092950 instance=ExtResource("6_mlk18")]
 layout_mode = 2
-theme_type_variation = &"Button_blue"
+theme_type_variation = &"Button_green"
 
-[node name="Button2" parent="Chefs/VBoxContainer" unique_id=99648117 instance=ExtResource("6_mlk18")]
-layout_mode = 2
-theme_type_variation = &"Button_yellow"
+[node name="Icon" type="TextureRect" parent="Chefs/VBoxContainer/Active" unique_id=1369554071]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_dct4q")
 
-[node name="Button3" parent="Chefs/VBoxContainer" unique_id=1181146366 instance=ExtResource("6_mlk18")]
+[node name="Chefs" parent="Chefs/VBoxContainer" unique_id=1181146366 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_purple"
+
+[node name="Icon" type="TextureRect" parent="Chefs/VBoxContainer/Chefs" unique_id=2047644260]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_x5c8i")
 
 [node name="Anims" type="AnimationPlayer" parent="Chefs" unique_id=2058757555]
 libraries/ = SubResource("AnimationLibrary_wa5vk")
@@ -756,19 +1072,6 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Outline3" type="NinePatchRect" parent="Stats/ColorRect" unique_id=1388731034]
-layout_mode = 1
-offset_left = 22.0
-offset_top = 44.0
-offset_right = 42.0
-offset_bottom = 64.0
-texture = ExtResource("5_23ovu")
-region_rect = Rect2(0, 0, 20, 20)
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Stats" unique_id=1492538744]
 layout_mode = 0
 offset_left = 8.0
@@ -777,17 +1080,43 @@ offset_right = 40.0
 offset_bottom = 80.0
 theme_override_constants/separation = 3
 
-[node name="Button" parent="Stats/VBoxContainer" unique_id=1336333087 instance=ExtResource("6_mlk18")]
+[node name="Button3" parent="Stats/VBoxContainer" unique_id=1999492530 instance=ExtResource("6_mlk18")]
 layout_mode = 2
-theme_type_variation = &"Button_blue"
+theme_type_variation = &"Button_pink"
+
+[node name="Icon" type="TextureRect" parent="Stats/VBoxContainer/Button3" unique_id=1033775797]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_1idv1")
 
 [node name="Button2" parent="Stats/VBoxContainer" unique_id=442696932 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_yellow"
 
-[node name="Button3" parent="Stats/VBoxContainer" unique_id=1999492530 instance=ExtResource("6_mlk18")]
-layout_mode = 2
-theme_type_variation = &"Button_purple"
+[node name="Icon" type="TextureRect" parent="Stats/VBoxContainer/Button2" unique_id=882904042]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_k40ht")
 
 [node name="Anims" type="AnimationPlayer" parent="Stats" unique_id=1386293160]
 libraries/ = SubResource("AnimationLibrary_wa5vk")
