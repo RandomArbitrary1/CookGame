@@ -75,12 +75,9 @@ texture = ExtResource("1_gsbwm")
 4:2/0 = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 2.8777409, -8, 3.2374573)
 4:2/0/custom_data_0 = "trash"
-1:5/0 = 0
-1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:5/0/custom_data_0 = "crate"
-0:5/0 = 0
-0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.935337, 8, -6.2950544, 8, 8, -8, 8)
-0:5/0/custom_data_0 = "conveyor"
+5:2/0 = 0
+5:3/0 = 0
+5:0/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 1
