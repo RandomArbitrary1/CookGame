@@ -4,7 +4,8 @@ extends BaseButton
 
 func _ready() -> void:
 	mouse_entered.connect(func():
-		get_node("Outline").visible = true
+		if not disabled:
+			get_node("Outline").visible = true
 	)
 	mouse_exited.connect(func():
 		get_node("Outline").visible = false
