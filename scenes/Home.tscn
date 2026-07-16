@@ -191,6 +191,92 @@ _data = {
 &"RESET": SubResource("Animation_ki45x")
 }
 
+[sub_resource type="GDScript" id="GDScript_w1b7w"]
+resource_name = "Chefs_script"
+script/source = "extends ColorRect
+
+var chefs = []
+
+var tab = \"Active\"
+var selected = null
+
+func updateChefs():
+	if not selected:
+		self.get_node(\"Tabs/Active/Options/Add\").visible = true
+		self.get_node(\"Tabs/Active/Options/Switch\").visible = false
+		self.get_node(\"Tabs/Active/Options/Remove\").visible = false
+	else:
+		self.get_node(\"Tabs/Active/Options/Add\").visible = false
+		self.get_node(\"Tabs/Active/Options/Switch\").visible = true
+		self.get_node(\"Tabs/Active/Options/Remove\").visible = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	for i in self.get_node(\"NavItems\").get_children():
+		i.pressed.connect(func():
+			if tab != i.name:
+				tab = i.name
+				for t in self.get_node(\"Tabs\").get_children():
+					if t.name == tab:
+						t.visible = true
+					else:
+						t.visible = false
+				i.get_node(\"Active\").visible = true
+				for it in self.get_node(\"NavItems\").get_children():
+					if it != i:
+						it.get_node(\"Active\").visible = false
+		)
+	for i in self.get_node(\"Tabs/Active/Selected\").get_children():
+		i.pressed.connect(func():
+			if selected == i:
+				selected = null
+			elif chefs.size() > i.get_index():
+				selected = i
+			updateChefs()
+			for it in self.get_node(\"Tabs/Active/Selected\").get_children():
+				if it != selected:
+					it.modulate = Color(1,1,1)
+				else:
+					i.modulate = Color(0.791, 0.949, 0.994, 1.0)
+		)
+	self.get_node(\"Tabs/Active/Options/Add\").pressed.connect(func():
+		if chefs.size() < 8:
+			chefs.append(\"Test\")
+			updateChefs()
+	)
+	self.get_node(\"Tabs/Active/Options/Remove\").pressed.connect(func():
+		chefs.remove_at(selected.get_index())
+		selected = null
+		for it in self.get_node(\"Tabs/Active/Selected\").get_children():
+				it.modulate = Color(1,1,1)
+		updateChefs()
+	)
+"
+
+[sub_resource type="GDScript" id="GDScript_n1rrq"]
+resource_name = "Stats_script"
+script/source = "extends ColorRect
+
+var tab = \"Active\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	for i in self.get_node(\"NavItems\").get_children():
+		i.pressed.connect(func():
+			if tab != i.name:
+				tab = i.name
+				for t in self.get_node(\"Tabs\").get_children():
+					if t.name == tab:
+						t.visible = true
+					else:
+						t.visible = false
+				i.get_node(\"Active\").visible = true
+				for it in self.get_node(\"NavItems\").get_children():
+					if it != i:
+						it.get_node(\"Active\").visible = false
+		)
+"
+
 [node name="Home" type="Control" unique_id=1979595064]
 layout_mode = 3
 anchors_preset = 15
@@ -826,6 +912,7 @@ offset_bottom = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.74509805)
+script = SubResource("GDScript_w1b7w")
 
 [node name="Tabs" type="Control" parent="Chefs" unique_id=1660264906]
 anchors_preset = 0
@@ -842,14 +929,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Selected" type="HBoxContainer" parent="Chefs/Tabs/Active" unique_id=1879918506]
+[node name="Selected" type="GridContainer" parent="Chefs/Tabs/Active" unique_id=286132400]
 layout_mode = 0
 offset_right = 200.0
-offset_bottom = 40.0
-theme_override_constants/separation = 3
+offset_bottom = 96.0
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+columns = 4
 
 [node name="Button" parent="Chefs/Tabs/Active/Selected" unique_id=1276375037 instance=ExtResource("4_23ovu")]
-custom_minimum_size = Vector2(40, 32)
+custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -860,7 +949,7 @@ offset_bottom = 32.0
 stretch_mode = 3
 
 [node name="Button2" parent="Chefs/Tabs/Active/Selected" unique_id=2053646276 instance=ExtResource("4_23ovu")]
-custom_minimum_size = Vector2(40, 32)
+custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -871,7 +960,7 @@ offset_bottom = 32.0
 stretch_mode = 3
 
 [node name="Button3" parent="Chefs/Tabs/Active/Selected" unique_id=114678574 instance=ExtResource("4_23ovu")]
-custom_minimum_size = Vector2(40, 32)
+custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -882,7 +971,7 @@ offset_bottom = 32.0
 stretch_mode = 3
 
 [node name="Button4" parent="Chefs/Tabs/Active/Selected" unique_id=1793093933 instance=ExtResource("4_23ovu")]
-custom_minimum_size = Vector2(40, 32)
+custom_minimum_size = Vector2(40, 44)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -891,6 +980,85 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 32.0
 stretch_mode = 3
+
+[node name="Button5" parent="Chefs/Tabs/Active/Selected" unique_id=854339055 instance=ExtResource("4_23ovu")]
+custom_minimum_size = Vector2(40, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button5" unique_id=1936354597]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+stretch_mode = 3
+
+[node name="Button6" parent="Chefs/Tabs/Active/Selected" unique_id=1229284928 instance=ExtResource("4_23ovu")]
+custom_minimum_size = Vector2(40, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button6" unique_id=1747529801]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+stretch_mode = 3
+
+[node name="Button7" parent="Chefs/Tabs/Active/Selected" unique_id=908261368 instance=ExtResource("4_23ovu")]
+custom_minimum_size = Vector2(40, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button7" unique_id=1108138636]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+stretch_mode = 3
+
+[node name="Button8" parent="Chefs/Tabs/Active/Selected" unique_id=1526639171 instance=ExtResource("4_23ovu")]
+custom_minimum_size = Vector2(40, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Chefs/Tabs/Active/Selected/Button8" unique_id=488620941]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+stretch_mode = 3
+
+[node name="Options" type="HBoxContainer" parent="Chefs/Tabs/Active" unique_id=172409510]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 200.0
+offset_bottom = 112.0
+alignment = 2
+
+[node name="Add" parent="Chefs/Tabs/Active/Options" unique_id=1864893060 instance=ExtResource("6_mlk18")]
+custom_minimum_size = Vector2(36, 16)
+layout_mode = 2
+theme_type_variation = &"Button_green"
+text = "Add"
+
+[node name="Switch" parent="Chefs/Tabs/Active/Options" unique_id=192582418 instance=ExtResource("6_mlk18")]
+visible = false
+custom_minimum_size = Vector2(52, 16)
+layout_mode = 2
+theme_type_variation = &"Button_green"
+text = "Switch"
+
+[node name="Remove" parent="Chefs/Tabs/Active/Options" unique_id=1632392594 instance=ExtResource("6_mlk18")]
+visible = false
+custom_minimum_size = Vector2(60, 16)
+layout_mode = 2
+theme_type_variation = &"Button_green"
+text = "Remove"
+
+[node name="Chefs" type="Control" parent="Chefs/Tabs" unique_id=1432823361]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Nav" type="TextureRect" parent="Chefs" unique_id=504004164]
 layout_mode = 0
@@ -952,7 +1120,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Chefs" unique_id=2117476630]
+[node name="NavItems" type="VBoxContainer" parent="Chefs" unique_id=2117476630]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 24.0
@@ -960,11 +1128,30 @@ offset_right = 40.0
 offset_bottom = 80.0
 theme_override_constants/separation = 3
 
-[node name="Active" parent="Chefs/VBoxContainer" unique_id=1689092950 instance=ExtResource("6_mlk18")]
+[node name="Active" parent="Chefs/NavItems" unique_id=1689092950 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_green"
 
-[node name="Icon" type="TextureRect" parent="Chefs/VBoxContainer/Active" unique_id=1369554071]
+[node name="Active" type="NinePatchRect" parent="Chefs/NavItems/Active" unique_id=527859228]
+modulate = Color(0.17254902, 0.7647059, 0.9019608, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mlk18")
+region_rect = Rect2(0, 0, 18, 18)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="Icon" type="TextureRect" parent="Chefs/NavItems/Active" unique_id=1369554071]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -979,11 +1166,31 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("23_dct4q")
 
-[node name="Chefs" parent="Chefs/VBoxContainer" unique_id=1181146366 instance=ExtResource("6_mlk18")]
+[node name="Chefs" parent="Chefs/NavItems" unique_id=1181146366 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_purple"
 
-[node name="Icon" type="TextureRect" parent="Chefs/VBoxContainer/Chefs" unique_id=2047644260]
+[node name="Active" type="NinePatchRect" parent="Chefs/NavItems/Chefs" unique_id=1855970572]
+visible = false
+modulate = Color(0.17254902, 0.7647059, 0.9019608, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mlk18")
+region_rect = Rect2(0, 0, 18, 18)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="Icon" type="TextureRect" parent="Chefs/NavItems/Chefs" unique_id=2047644260]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1011,6 +1218,30 @@ offset_bottom = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.74509805)
+script = SubResource("GDScript_n1rrq")
+
+[node name="Tabs" type="Control" parent="Stats" unique_id=1482171966]
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 248.0
+offset_bottom = 136.0
+
+[node name="Rating" type="Control" parent="Stats/Tabs" unique_id=416123881]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Last" type="Control" parent="Stats/Tabs" unique_id=1642146563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Nav" type="TextureRect" parent="Stats" unique_id=1387458990]
 layout_mode = 0
@@ -1072,7 +1303,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Stats" unique_id=1492538744]
+[node name="NavItems" type="VBoxContainer" parent="Stats" unique_id=1492538744]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 24.0
@@ -1080,11 +1311,30 @@ offset_right = 40.0
 offset_bottom = 80.0
 theme_override_constants/separation = 3
 
-[node name="Button3" parent="Stats/VBoxContainer" unique_id=1999492530 instance=ExtResource("6_mlk18")]
+[node name="Rating" parent="Stats/NavItems" unique_id=1999492530 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_pink"
 
-[node name="Icon" type="TextureRect" parent="Stats/VBoxContainer/Button3" unique_id=1033775797]
+[node name="Active" type="NinePatchRect" parent="Stats/NavItems/Rating" unique_id=1800055190]
+modulate = Color(0.17254902, 0.7647059, 0.9019608, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mlk18")
+region_rect = Rect2(0, 0, 18, 18)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="Icon" type="TextureRect" parent="Stats/NavItems/Rating" unique_id=1033775797]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1099,11 +1349,31 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_1idv1")
 
-[node name="Button2" parent="Stats/VBoxContainer" unique_id=442696932 instance=ExtResource("6_mlk18")]
+[node name="Last" parent="Stats/NavItems" unique_id=442696932 instance=ExtResource("6_mlk18")]
 layout_mode = 2
 theme_type_variation = &"Button_yellow"
 
-[node name="Icon" type="TextureRect" parent="Stats/VBoxContainer/Button2" unique_id=882904042]
+[node name="Active" type="NinePatchRect" parent="Stats/NavItems/Last" unique_id=2085087094]
+visible = false
+modulate = Color(0.17254902, 0.7647059, 0.9019608, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mlk18")
+region_rect = Rect2(0, 0, 18, 18)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="Icon" type="TextureRect" parent="Stats/NavItems/Last" unique_id=882904042]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
