@@ -10,7 +10,7 @@ var player = null
 var done_following = true
 var time_taken_collision = 0.0
 var work_state = ""
-var holding_item = null
+var held_item = null
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -41,11 +41,17 @@ func move_process(delta):
 	var next_point = nav_agent.get_next_path_position()
 	var dir = (next_point - global_position).normalized()
 	velocity = dir * speed * delta
-
 	move_and_slide()
 	
 func action():
 	test_audio.play()
 	var cell = tile_map.local_to_map(tile_map.to_local(nav_agent.target_position))
 	var tile_data: TileData = tile_map.get_cell_tile_data(cell)
-	print(tile_data.get_custom_data("tile_type"))
+	var tile_sub_data = tile_data.get_custom_data("tile_type")
+	if tile_sub_data == "crate":
+		pick_up(tile_sub_data)
+		print("IM TOUCHING A CRATE")
+		
+func pick_up(item_string):
+	if !held_item:
+		held_item = item_string
