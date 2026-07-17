@@ -60,6 +60,8 @@ func action():
 			pick_up(tile_data)
 	if tile_sub_data == "cutboard":
 		cut()
+	if tile_sub_data == "trash":
+		trash()
 	print("I have this: " + str(held_item))
 
 func pick_up(item_string): # pick up ingredients
@@ -82,3 +84,8 @@ func place(cell): # place ingredients
 	
 func cut(): # cut and dice ingredients
 	pass
+func trash():
+	held_item = null
+	var placa = get_node_or_null("Placeable")
+	if placa:
+		placa.queue_free()
