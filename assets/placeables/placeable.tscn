@@ -3,6 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://n64eqisio6xk" path="res://assets/placeables/tomato.png" id="1_cafrr"]
 [ext_resource type="Script" uid="uid://5pxi61iyn7hw" path="res://scripts/placeable/placeable.gd" id="2_eg1oa"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cafrr"]
+radius = 4.0
+
 [node name="Placeable" type="Sprite2D" unique_id=971806343]
 texture = ExtResource("1_cafrr")
 script = ExtResource("2_eg1oa")
+
+[node name="PlacHITBOX" type="Area2D" parent="." unique_id=1720644806]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacHITBOX" unique_id=1769171648]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_cafrr")

@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dofkevv20kig" path="res://assets/characters/chef/img/outfit1_mirrored.png" id="4_4e7ff"]
 [ext_resource type="Script" uid="uid://bbndw3pjrg375" path="res://scripts/chef/animation.gd" id="5_jskf3"]
 [ext_resource type="Texture2D" uid="uid://c3igv8bk4aphm" path="res://assets/vfx/light1.png" id="6_43a53"]
-[ext_resource type="AudioStream" uid="uid://ea0kwws58juv" path="res://assets/audio/sfx/coin1.mp3" id="7_a7xdj"]
+[ext_resource type="AudioStream" uid="uid://dwfuwfukx2qc6" path="res://assets/audio/sfx/kitchen/trash.mp3" id="7_w864r"]
+[ext_resource type="AudioStream" uid="uid://btkwi3txvelhg" path="res://assets/audio/sfx/kitchen/plate_put_down.mp3" id="8_5tayd"]
+[ext_resource type="AudioStream" uid="uid://hooqxxff3aog" path="res://assets/audio/sfx/kitchen/storage.mp3" id="9_xiqoa"]
+[ext_resource type="AudioStream" uid="uid://bc73y61lh175y" path="res://assets/audio/sfx/kitchen/chopping_loop.mp3" id="10_5tayd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_035l4"]
 radius = 1.4142135
@@ -36,6 +39,11 @@ animations = [{
 "speed": 0.9
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7xdj"]
+radius = 4.527693
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a7xdj"]
+
 [node name="Chef" type="CharacterBody2D" unique_id=396987354 groups=["chef"]]
 script = ExtResource("1_035l4")
 
@@ -63,8 +71,27 @@ script = ExtResource("5_jskf3")
 path_desired_distance = 5.0
 radius = 32.0
 
-[node name="TestAudio" type="AudioStreamPlayer2D" parent="." unique_id=2086142442]
-stream = ExtResource("7_a7xdj")
-volume_db = -5.0
-pitch_scale = 4.0
-bus = &"Sounds"
+[node name="CheckBox" type="Area2D" parent="." unique_id=1437990137]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckBox" unique_id=1222670901]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("CircleShape2D_a7xdj")
+
+[node name="debug_show" type="Sprite2D" parent="CheckBox" unique_id=461582684]
+visible = false
+position = Vector2(7.1525574e-07, 0)
+scale = Vector2(0.011718753, 0.01171875)
+texture = SubResource("NoiseTexture2D_a7xdj")
+
+[node name="trash_sfx" type="AudioStreamPlayer2D" parent="." unique_id=1246054990]
+stream = ExtResource("7_w864r")
+
+[node name="place_sfx" type="AudioStreamPlayer2D" parent="." unique_id=379955819]
+stream = ExtResource("8_5tayd")
+
+[node name="storage_sfx" type="AudioStreamPlayer2D" parent="." unique_id=1827648368]
+stream = ExtResource("9_xiqoa")
+
+[node name="cut_sfx" type="AudioStreamPlayer2D" parent="." unique_id=653235020]
+stream = ExtResource("10_5tayd")
+pitch_scale = 3.0

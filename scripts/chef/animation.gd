@@ -13,3 +13,5 @@ func _process(delta: float) -> void:
 	anim_outfit.speed_scale = float(anim_speed_vary) / 10
 	if !body.velocity == Vector2(0.0,0.0):
 		anim_outfit.speed_scale = 5
+	if delta:
+		pass
