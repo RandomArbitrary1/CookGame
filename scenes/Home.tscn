@@ -290,7 +290,7 @@ script = SubResource("GDScript_23ovu")
 
 [node name="Nav" type="ColorRect" parent="." unique_id=1603296852]
 layout_mode = 0
-offset_top = 120.0
+offset_top = 128.0
 offset_right = 256.0
 offset_bottom = 144.0
 color = Color(0.056291588, 0.056291603, 0.056291595, 1)
@@ -350,9 +350,9 @@ patch_margin_bottom = 10
 [node name="NavItems" type="HBoxContainer" parent="." unique_id=1450392692]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 112.0
+offset_top = 120.0
 offset_right = 239.0
-offset_bottom = 128.0
+offset_bottom = 136.0
 theme_override_constants/separation = 3
 
 [node name="Chefs" parent="NavItems" unique_id=830832516 instance=ExtResource("6_mlk18")]
