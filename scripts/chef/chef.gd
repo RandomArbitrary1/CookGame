@@ -50,11 +50,13 @@ func action():
 	var tile_sub_data = tile_data.get_custom_data("tile_type")
 	if tile_sub_data == "storage":
 		pick_up(tile_sub_data)
-		print("storage reached mofossss")
-	print("I have this:" + str(held_item))
-		
+	if tile_sub_data == "counter":
+		place()
+	print("I have this: " + str(held_item))
+
 func pick_up(item_string):
 	if !held_item:
-		held_item = item_string
+		#held_item = item_string # final result
+		held_item = "tomato"
 func place():
 	held_item = null
