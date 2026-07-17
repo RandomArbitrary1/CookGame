@@ -6,4 +6,3 @@
 [node name="Placeable" type="Sprite2D" unique_id=971806343]
 texture = ExtResource("1_cafrr")
 script = ExtResource("2_eg1oa")
-a = 932

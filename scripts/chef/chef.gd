@@ -4,6 +4,9 @@ extends CharacterBody2D
 @onready var tile_map: TileMapLayer = $"../NavigationRegion2D/TileMapLayer"
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var test_audio: AudioStreamPlayer2D = $TestAudio
+@onready var root: Node2D = $".."
+const PLACEABLE = preload("res://assets/placeables/placeable.tscn")
+
 var speed = 2000.0
 var direction = Vector2(0.0,0.0)
 var player = null
@@ -51,12 +54,31 @@ func action():
 	if tile_sub_data == "storage":
 		pick_up(tile_sub_data)
 	if tile_sub_data == "counter":
-		place()
+		if held_item:
+			place(cell)
+		else:
+			pick_up(tile_data)
+	if tile_sub_data == "cutboard":
+		cut()
 	print("I have this: " + str(held_item))
 
-func pick_up(item_string):
+func pick_up(item_string): # pick up ingredients
 	if !held_item:
 		#held_item = item_string # final result
 		held_item = "tomato"
-func place():
+		var placa = PLACEABLE.instantiate()
+		add_child(placa)
+		print("I HAVE PICKED UP")
+func place(cell): # place ingredients
+	cell = Vector2(cell[0]+0.5,cell[1]+0.2)
+	var cal = cell * 16
 	held_item = null
+	var placa = get_node_or_null("Placeable")
+	if placa:
+		placa.queue_free()
+		var plac2 = PLACEABLE.instantiate()
+		root.add_child(plac2)
+		plac2.global_position = cal
+	
+func cut(): # cut and dice ingredients
+	pass
