@@ -1,41 +1,42 @@
-/// All foods idea list
+*All foods idea list*
 
-// Italian
+**Italian**
 Spaghetti = Noodles, bolognese sauce, italian spices
-Pizza = Dough, tomato sauce, grated cheese, 
+Pizza = Dough, tomato sauce, grated cheese,
 
-// Japanese
+**Japanese**
 Sushi = Fish, seaweed
 Ramen = Noodles, spices, chicken, broth
 
-// Dutch
+**Dutch**
 Stamppot = Boerenkool, potatoes, smoked sausage
 Bitterballen = Fried something something
 Hollandse nieuwe = Fish, diced onion
 Zeeuwze bolus = Dough, butter, brown sugar
 
-// American
+**American**
 Hamburger = Buns, patty, ketchup
 Salad = Diced fruit, salad dressing
 Steak = Butter, meat, spices, salt
-Cheesecake = Dough, 
+Cheesecake = Dough,
 
-// Mexican
+**Mexican**
 Tacos = Taco shells, meat, vegetables
 Burritos = Wrap, meat, spices
 Roasted chicken = Chicken, spices, butter
 
-// French
+**French**
 French toast = Bread, sugar, butter
 Chicken soup = Chicken, broth, spices
 Tomato Soup = Tomatoes, broth, spices
 
-// Hungarian
+**Hungarian**
 Goulash = Lamb, broth, spices
 
-// Romanian
+**Romanian**
 Sarmale = Cabbage, dough
 Mitiei = Sausage
 
-// Turkish
+**Turkish**
 Doner kebab = Meat,
+

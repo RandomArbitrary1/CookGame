@@ -26,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://cfbmimnk10lgq" path="res://assets/ui/icons/Dessert.png" id="20_dct4q"]
 [ext_resource type="Texture2D" uid="uid://nlt1yf0v67ew" path="res://assets/ui/icons/Drinks.png" id="21_k40ht"]
 [ext_resource type="Texture2D" uid="uid://brf4lecuimmmb" path="res://assets/ui/icons/Active_chefs.png" id="23_dct4q"]
+[ext_resource type="Texture2D" uid="uid://dhe8sb1bf2hy3" path="res://assets/dishes/Tomato soup.png" id="24_n1rrq"]
+[ext_resource type="Texture2D" uid="uid://bipqgc54cerfq" path="res://assets/dishes/Sushi.png" id="25_ccywe"]
 [ext_resource type="Texture2D" uid="uid://dgsmthls31w74" path="res://assets/ui/icons/Last_shift.png" id="25_k40ht"]
 
 [sub_resource type="GDScript" id="GDScript_23ovu"]
@@ -55,28 +57,27 @@ script/source = "extends ColorRect
 
 var selected = null
 var tab = \"Starters\"
+var info = preload(\"res://assets/data/dishes.json\").data
 
-var items = [
-	{name=\"Food\",type=\"Starters\",kitchen=\"Country\",price=12,Description=\"About\"},
-	{name=\"Epic dish\",type=\"Mains\",kitchen=\"Epic place\",price=69,Description=\"Epic facts\"},
-	{name=\"Cooked chicken\",type=\"Mains\",kitchen=\"English\",price=69,Description=\"No seasoning, just cooked\"},
-	{name=\"Gamer girl bathwater\",type=\"Drinks\",kitchen=\"English\",price=69,Description=\"Fresh from the tub\"},
-]
+var items = [\"Tomato soup\",\"Sushi\"]
 
 @onready var temp = self.get_node(\"Tab/List/Button\").duplicate()
 
 func loadList():
 	for i in self.get_node(\"Tab/List\").get_children():
 		i.queue_free()
-	for i in items:
+	for d in items:
+		var i = info.get(d)
 		if i.type == tab:
 			var item = temp.duplicate()
+			item.get_node(\"Image\").texture = load(\"res://assets/dishes/\" + d + \".png\")
 			self.get_node(\"Tab/List\").add_child(item)
 			item.pressed.connect(func():
-				selected = i.name
-				self.get_node(\"Info/Title\").text = i.name
+				selected = d
+				self.get_node(\"Info/Title\").text = d
 				self.get_node(\"Info/Kitchen\").text = i.kitchen + \" dish\"
-				self.get_node(\"Info/Price\").text = str(i.price) + \"$\"
+				self.get_node(\"Info/Price\").text = str(int(i.price)) + \"$\"
+				self.get_node(\"Info/Preview/Image\").texture = item.get_node(\"Image\").texture
 				item.modulate = Color(0.791, 0.949, 0.994, 1.0)
 				selected = item
 				for it in self.get_node(\"Tab/List\").get_children():
@@ -577,7 +578,6 @@ offset_bottom = 136.0
 theme = ExtResource("3_p3505")
 
 [node name="List" type="GridContainer" parent="Menu/Tab" unique_id=47797049]
-custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -589,7 +589,7 @@ columns = 3
 custom_minimum_size = Vector2(40, 32)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Menu/Tab/List/Button" unique_id=146107942]
+[node name="Image" type="TextureRect" parent="Menu/Tab/List/Button" unique_id=146107942]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 32.0
@@ -603,15 +603,18 @@ offset_right = 248.0
 offset_bottom = 136.0
 theme_override_constants/separation = 1
 
-[node name="Button" parent="Menu/Info" unique_id=1210826483 instance=ExtResource("4_23ovu")]
+[node name="Preview" parent="Menu/Info" unique_id=1210826483 instance=ExtResource("4_23ovu")]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="Menu/Info/Button" unique_id=1210173124]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 32.0
+[node name="Image" type="TextureRect" parent="Menu/Info/Preview" unique_id=1210173124]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 stretch_mode = 3
 
 [node name="Title" type="Label" parent="Menu/Info" unique_id=1831913951]
@@ -903,6 +906,22 @@ texture = ExtResource("21_k40ht")
 
 [node name="Anims" type="AnimationPlayer" parent="Menu" unique_id=2037592935]
 libraries/ = SubResource("AnimationLibrary_wa5vk")
+
+[node name="Image" type="TextureRect" parent="Menu" unique_id=1140115265]
+layout_mode = 0
+offset_left = 56.0
+offset_right = 72.0
+offset_bottom = 16.0
+texture = ExtResource("24_n1rrq")
+expand_mode = 1
+
+[node name="Image2" type="TextureRect" parent="Menu" unique_id=779003069]
+layout_mode = 0
+offset_left = 72.0
+offset_right = 88.0
+offset_bottom = 16.0
+texture = ExtResource("25_ccywe")
+expand_mode = 1
 
 [node name="Chefs" type="ColorRect" parent="." unique_id=1830160328]
 visible = false

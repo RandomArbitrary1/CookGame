@@ -1,3 +1,4 @@
 {
-	"tomato soup":{"type":"Starters","kitchen":"Country","price":12,"Description":"About"}
+	"Tomato soup":{"type":"Mains","kitchen":"Country","price":12,"Description":"About"},
+	"Sushi":{"type":"Mains","kitchen":"Country","price":23,"Description":"About"}
 }
