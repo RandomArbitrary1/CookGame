@@ -59,7 +59,7 @@ var selected = null
 var tab = \"Starters\"
 var info = preload(\"res://assets/data/dishes.json\").data
 
-var items = [\"Tomato soup\",\"Sushi\"]
+var items = [\"Tomato soup\",\"Sushi\",\"Cheescake\",\"Spaghetti\",\"Steak\",\"Burrito\",\"Taco\"]
 
 @onready var temp = self.get_node(\"Tab/List/Button\").duplicate()
 

@@ -1,4 +1,9 @@
 {
 	"Tomato soup":{"type":"Mains","kitchen":"Country","price":12,"Description":"About"},
-	"Sushi":{"type":"Mains","kitchen":"Country","price":23,"Description":"About"}
+	"Sushi":{"type":"Mains","kitchen":"Country","price":23,"Description":"About"},
+	"Burrito":{"type":"Mains","kitchen":"Country","price":23,"Description":"About"},
+	"Cheescake":{"type":"Desserts","kitchen":"Country","price":23,"Description":"About"},
+	"Spaghetti":{"type":"Mains","kitchen":"Country","price":23,"Description":"About"},
+	"Steak":{"type":"Mains","kitchen":"Country","price":23,"Description":"About"},
+	"Taco":{"type":"Mains","kitchen":"Country","price":23,"Description":"About"}
 }
