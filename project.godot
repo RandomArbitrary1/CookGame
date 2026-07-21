@@ -27,6 +27,7 @@ window/stretch/mode="viewport"
 chef=""
 dish=""
 player=""
+placeable=""
 
 [input]
 

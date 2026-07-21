@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dk10bdjunp8ea" path="res://assets/vfx/grid_highlight.png" id="4_ju3fu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prble"]
-radius = 6.0
+radius = 7.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_prble"]
 animations = [{

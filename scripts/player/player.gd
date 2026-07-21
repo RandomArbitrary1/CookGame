@@ -17,7 +17,9 @@ func _process(delta: float) -> void:
 		select()
 	if Input.is_action_just_pressed("Mouse2"):
 		place()
+	grid_highlight.visible = false
 	if selected_object:
+		grid_highlight.visible = true
 		if !selected_object.has_node("TargetSprite"):
 			var tar = TARGET_SPRITE.instantiate()
 			selected_object.add_child(tar)

@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://by6c74ta1wq3l" path="res://assets/characters/player/player.tscn" id="3_2b6py"]
 [ext_resource type="PackedScene" uid="uid://6xxidnyjocpr" path="res://assets/placeables/plate.tscn" id="4_bems3"]
 [ext_resource type="PackedScene" uid="uid://b8q7h4vk1s3lh" path="res://assets/placeables/placeable.tscn" id="5_v3ycp"]
+[ext_resource type="AudioStream" uid="uid://kl4rcmf6vt65" path="res://assets/audio/ambience/outside1.mp3" id="6_g3o0j"]
+[ext_resource type="AudioStream" uid="uid://cfw320hr6wjvv" path="res://assets/audio/music/Morning Alarm [ZOICf8notK8].mp3" id="7_58u3k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2b6py"]
 vertices = PackedVector2Array(248, 136, 8, 136, 8, 120, 248, 120, 235.40625, 72, 235.59375, 88, 24, 88, 232, 72, 24, 40, 84.59375, 40, 216, 34.710938, 216, 24, 232, 24, 84.77344, 24, 91.40625, 24, 91.59375, 40, 196.59375, 40, 196.64063, 35.132813)
@@ -32,3 +34,18 @@ position = Vector2(168, 23)
 
 [node name="Placeable" parent="." unique_id=971806343 instance=ExtResource("5_v3ycp")]
 position = Vector2(103, 24)
+
+[node name="Chef2" parent="." unique_id=945912132 instance=ExtResource("2_mrp8g")]
+position = Vector2(68, 43)
+
+[node name="AmbienceOutside" type="AudioStreamPlayer2D" parent="." unique_id=1471846563]
+position = Vector2(130, -2)
+stream = ExtResource("6_g3o0j")
+volume_db = -25.0
+autoplay = true
+parameters/looping = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1541596052]
+stream = ExtResource("7_58u3k")
+volume_db = -25.0
+parameters/looping = true

@@ -6,9 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_cafrr"]
 radius = 4.0
 
-[node name="Placeable" type="Sprite2D" unique_id=971806343]
+[node name="Placeable" type="Sprite2D" unique_id=971806343 groups=["placeable"]]
 texture = ExtResource("1_cafrr")
 script = ExtResource("2_eg1oa")
+selected_texture = "uid://n64eqisio6xk"
 
 [node name="PlacHITBOX" type="Area2D" parent="." unique_id=1720644806]
 
