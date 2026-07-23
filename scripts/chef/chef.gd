@@ -16,6 +16,7 @@ const PLACEABLE = preload("res://assets/placeables/placeable.tscn")
 var speed = 2000.0
 var direction = Vector2(0.0,0.0)
 var player = null
+var game = null
 var done_following = true
 var time_taken_collision = 0.0
 var work_state = ""
@@ -23,6 +24,7 @@ var held_item = null
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	game = get_tree().get_first_node_in_group("game")
 
 func _physics_process(delta: float) -> void:
 	move_process(delta)
@@ -80,10 +82,14 @@ func action():
 	if tile_sub_data == "trash": # Finished
 		trash()
 func tray():
-	var texture_path = held_item.texture.resource_path
-	var file_name = texture_path.get_file().get_basename()
-	if file_name == "pot_tomato":
-		pass
+	if held_item:
+		var texture_path = held_item.texture.resource_path
+		var file_name = texture_path.get_file().get_basename()
+		var orders = game.orders
+		for order in orders:
+			if order == file_name:
+				game.remove_order(file_name)
+				remove_held_item()
 func oven():
 	if !held_item:
 		return
@@ -136,14 +142,15 @@ func cut(pos): # cut and dice ingredients
 	if ResourceLoader.exists(cut_path):
 		held_item.texture = load(cut_path)
 		cut_sfx.play()
-	else:
-		error_sfx.play()
 func trash():
 	if held_item:
 		trash_sfx.play()
 		held_item.queue_free()
 		held_item = null
-		
+func remove_held_item():
+	if held_item:
+		held_item.queue_free()
+		held_item = null
 func storage_select():
 	if held_item:
 		return

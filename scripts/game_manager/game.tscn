@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b71xd1csc0yyt"]
+
+[ext_resource type="Script" uid="uid://yky2n5k8gddv" path="res://scripts/game_manager/game.gd" id="1_rj3sb"]
+[ext_resource type="AudioStream" uid="uid://x0rfeayh3y0u" path="res://assets/audio/sfx/ui/bell.mp3" id="2_ctity"]
+[ext_resource type="AudioStream" uid="uid://bpvgerijsx3sb" path="res://assets/audio/sfx/ui/rip.mp3" id="3_8sosa"]
+
+[node name="Game" type="Node2D" unique_id=1187977778 groups=["game"]]
+script = ExtResource("1_rj3sb")
+
+[node name="bell_sfx" type="AudioStreamPlayer" parent="." unique_id=747932005]
+stream = ExtResource("2_ctity")
+volume_db = -10.0
+
+[node name="finish_order_sfx" type="AudioStreamPlayer" parent="." unique_id=1091840272]
+stream = ExtResource("3_8sosa")
+volume_db = -10.0

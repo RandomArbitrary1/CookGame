@@ -28,6 +28,7 @@ chef=""
 dish=""
 player=""
 placeable=""
+game=""
 
 [input]
 
