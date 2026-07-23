@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var root: Node2D = $".."
 const PLACEABLE = preload("res://assets/placeables/placeable.tscn")
 
-var speed = 2000.0
+var speed = 2500.0
 var direction = Vector2(0.0,0.0)
 var player = null
 var game = null
